@@ -88,11 +88,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\AcadDB.mdf" />
+    <Content Include="App_Data\AcadDB_log.ldf">
+      <DependentUpon>AcadDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Dtos\AlunoCursoDTO.cs" />
+    <Compile Include="Dtos\AlunoDTO.cs" />
+    <Compile Include="Dtos\AvaliacaoDTO.cs" />
+    <Compile Include="Dtos\CursoDTO.cs" />
+    <Compile Include="Dtos\DisciplinaDTO.cs" />
+    <Compile Include="Dtos\EnderecoDTO.cs" />
+    <Compile Include="Dtos\InstituicaoDTO.cs" />
+    <Compile Include="Dtos\NotaDTO.cs" />
+    <Compile Include="Dtos\ProfessorDTO.cs" />
+    <Compile Include="Dtos\UsuarioDTO.cs" />
+    <Compile Include="Enums\Enumerators.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -109,7 +124,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
