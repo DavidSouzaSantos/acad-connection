@@ -1,6 +1,6 @@
 # acad-connection
-Desenvolvendo uma aplicação acadêmica para gerenciamento de notas de alunos, utilizando conhecimento adquirido no curso Seja Full-Stack com Asp.NET Web API 2 e Javascript + SQL(https://www.udemy.com/share/101tE2B0sacVtSRn8=/)
-
+Desenvolvendo um sistema acadêmico para gerenciamento de notas de alunos. 
+Utilizando as ferramentas abaixo:
 - Visual Studio Community 2017 para criar uma Asp .NET Web Api 2
 - Frontend com Html, Css, Javascript, Bootstrap.
 - Recursos e Rotas na Web para consumo Mobile, Web ou Desktop.
