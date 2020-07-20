@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="DAL\AcessoBD.cs" />
     <Compile Include="Dtos\AlunoCursoDTO.cs" />
     <Compile Include="Dtos\AlunoDTO.cs" />
     <Compile Include="Dtos\AvaliacaoDTO.cs" />
