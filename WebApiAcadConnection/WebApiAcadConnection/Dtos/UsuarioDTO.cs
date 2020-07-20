@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using WebApiAcadConnection.Enums;
 
-namespace WebApiAcadConnection.Dtos
+namespace WebApiAcadConnection.DTOs
 {
     public class UsuarioDTO
     {

@@ -60,9 +60,9 @@ namespace WebApiAcadConnection.DAL
         ///Método para limpar parametro ao comando
         ///</summary>
         ///<param name="pNome">Nome do parametro</param>
-        public void LimparParanetros(string pNome)
+        public void LimparParanetros()
         {
-            ComandoSql.Parameters.Remove(pNome);
+            ComandoSql.Parameters.Clear();
         }
         #endregion
 
@@ -81,6 +81,7 @@ namespace WebApiAcadConnection.DAL
                 ComandoSql.ExecuteScalar();
 
                 IDataReader dtReader = ComandoSql.ExecuteReader();
+
                 DataTable dtResult = new DataTable();
                 dtResult.Load(dtReader);
 

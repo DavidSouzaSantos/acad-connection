@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApiAcadConnection.Dtos
+namespace WebApiAcadConnection.DTOs
 {
     public class AlunoCursoDTO
     {
