@@ -72,7 +72,7 @@ namespace WebApiAcadConnection.DAL
         ///</summary>
         ///<param name="pSql">Consulta SQL</param>
         ///<returns>DataTable da consulta</returns>
-        public DataTable ExecutaConsulta(string pSql)
+        public DataTable ExecutarConsulta(string pSql)
         {
             try
             {
@@ -106,14 +106,14 @@ namespace WebApiAcadConnection.DAL
         ///</summary>
         ///<param name="pSql">Comando SQL</param>
         ///<returns>Retorna true se comando foi executado com sucesso</returns>
-        public bool ExecutaComando(string pSql)
+        public int ExecutaComando(string pSql)
         {
             try
             {
                 ComandoSql.Connection = ObterConexao();
                 ComandoSql.CommandText = pSql;
 
-                return (ComandoSql.ExecuteNonQuery() > 0);
+                return Convert.ToInt32(ComandoSql.ExecuteScalar());
             }
             catch (Exception ex)
             {

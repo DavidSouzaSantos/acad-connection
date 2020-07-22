@@ -31,7 +31,7 @@ namespace WebApiAcadConnection.DAOs
 
                 AcessoBD.AdicionarParametro("@USUCODIGO", SqlDbType.BigInt, pCodigo);
 
-                DataTable dtUsuario = AcessoBD.ExecutaConsulta(sql);
+                DataTable dtUsuario = AcessoBD.ExecutarConsulta(sql);
 
                 if (dtUsuario.Rows.Count > 0)
                 {
@@ -59,7 +59,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public bool Cadastrar(UsuarioDTO pUsuario)
+        public int Cadastrar(UsuarioDTO pUsuario)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public bool Atualizar(UsuarioDTO pUsuario)
+        public int Atualizar(UsuarioDTO pUsuario)
         {
             try
             {
@@ -104,7 +104,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public bool Excluir(int pCodigo)
+        public int Excluir(int pCodigo)
         {
             try
             {

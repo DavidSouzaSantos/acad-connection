@@ -33,11 +33,11 @@ namespace WebApiAcadConnection.DAOs
                            ENDESTADO,
                            ENDPAIS
                         FROM ENDERECO
-                        WHERE ENDCODIGO = @ENDCODIGO";
+                        WHERE ENDCOD = @ENDCOD";
 
-                AcessoBD.AdicionarParametro("@CODIGO", SqlDbType.BigInt, pCodigo);
+                AcessoBD.AdicionarParametro("@ENDCOD", SqlDbType.BigInt, pCodigo);
 
-                DataTable dtEndereco = AcessoBD.ExecutaConsulta(sql);
+                DataTable dtEndereco = AcessoBD.ExecutarConsulta(sql);
 
                 if (dtEndereco.Rows.Count > 0)
                 {
@@ -70,7 +70,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public bool Cadastrar(EnderecoDTO pEndereco)
+        public int Cadastrar(EnderecoDTO pEndereco)
         {
             try
             {
@@ -97,7 +97,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public bool Atualizar(EnderecoDTO pEndereco)
+        public int Atualizar(EnderecoDTO pEndereco)
         {
             try
             {
@@ -105,9 +105,9 @@ namespace WebApiAcadConnection.DAOs
                 string sql = @"UPDATE ENDERECO SET
                                 ENDCEP=@ENDCEP, ENDLOGRADOURO=@ENDLOGRADOURO, ENDNUMERO=@ENDNUMERO, ENDCOMPLEMENTO=@ENDCOMPLEMENTO, ENDBAIRRO=@ENDBAIRRO, ENDCIDADE=@ENDCIDADE, ENDESTADO=@ENDESTADO, ENDPAIS=@ENDPAIS
                                WHERE
-                                ENDCODIGO=@ENDCODIGO";
+                                ENDCOD=@ENDCOD";
 
-                AcessoBD.AdicionarParametro("@ENDCODIGO", SqlDbType.BigInt, pEndereco.Codigo);
+                AcessoBD.AdicionarParametro("@ENDCOD", SqlDbType.BigInt, pEndereco.Codigo);
                 AcessoBD.AdicionarParametro("@ENDCEP", SqlDbType.VarChar, pEndereco.Cep);
                 AcessoBD.AdicionarParametro("@ENDLOGRADOURO", SqlDbType.VarChar, pEndereco.Logradouro);
                 AcessoBD.AdicionarParametro("@ENDNUMERO", SqlDbType.VarChar, pEndereco.Numero);
@@ -125,14 +125,14 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public bool Excluir(int pCodigo)
+        public int Excluir(int pCodigo)
         {
             try
             {
                 AcessoBD.LimparParanetros();
 
-                string sql = @"DELETE FROM ENDERECO WHERE ENDCODIGO=@ENDCODIGO";
-                AcessoBD.AdicionarParametro("@ENDCODIGO", SqlDbType.BigInt, pCodigo);
+                string sql = @"DELETE FROM ENDERECO WHERE ENDCOD=@ENDCOD";
+                AcessoBD.AdicionarParametro("@ENDCOD", SqlDbType.BigInt, pCodigo);
 
                 return AcessoBD.ExecutaComando(sql);
             }
