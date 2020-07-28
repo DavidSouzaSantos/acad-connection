@@ -98,8 +98,15 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="DAL\AcessoBD.cs" />
+    <Compile Include="DAOs\AlunoCursoDAO.cs" />
     <Compile Include="DAOs\AlunoDAO.cs" />
+    <Compile Include="DAOs\AvaliacaoDAO.cs" />
+    <Compile Include="DAOs\CursoDAO.cs" />
+    <Compile Include="DAOs\DisciplinaDAO.cs" />
     <Compile Include="DAOs\EnderecoDAO.cs" />
+    <Compile Include="DAOs\InstituicaoDAO.cs" />
+    <Compile Include="DAOs\NotaDAO.cs" />
+    <Compile Include="DAOs\ProfessorDAO.cs" />
     <Compile Include="DAOs\UsuarioDAO.cs" />
     <Compile Include="DTOs\AlunoCursoDTO.cs" />
     <Compile Include="DTOs\AlunoDTO.cs" />
@@ -115,6 +122,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AlunoModel.cs" />
+    <Compile Include="Models\AvaliacaoModel.cs" />
+    <Compile Include="Models\CursoModel.cs" />
+    <Compile Include="Models\DisciplinaModel.cs" />
+    <Compile Include="Models\EnderecoModel.cs" />
+    <Compile Include="Models\InstituicaoModel.cs" />
+    <Compile Include="Models\NotaModel.cs" />
+    <Compile Include="Models\ProfessorModel.cs" />
+    <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -129,7 +145,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

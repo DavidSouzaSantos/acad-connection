@@ -5,10 +5,10 @@ namespace WebApiAcadConnection.DTOs
 {
     public class NotaDTO
     {
-        public int Codigo { get; set; }
+        public int? Codigo { get; set; }
 
         [Required]
-        [Range(0, 10, ErrorMessage = "A Nota deve ser de 0 a 10")]
+        [Range(0, 10, ErrorMessage = "A nota deve ser de 0 a 10")]
         public int Nota { get; set; }
 
         [Required]

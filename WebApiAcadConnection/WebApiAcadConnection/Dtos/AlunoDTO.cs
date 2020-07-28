@@ -6,7 +6,7 @@ namespace WebApiAcadConnection.DTOs
 {
     public class AlunoDTO
     {
-        public int Codigo { get; set; }
+        public int? Codigo { get; set; }
 
         [Required]
         [MaxLength(250, ErrorMessage = "O Nome deve ter no maxímo 200 caracteres")]

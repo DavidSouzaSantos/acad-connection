@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApiAcadConnection.DTOs
 {
@@ -9,5 +10,8 @@ namespace WebApiAcadConnection.DTOs
 
         [Required]
         public CursoDTO Curso { get; set; }
+
+        [DefaultValue(true)]
+        public bool Ativo { get; set; }
     }
 }
