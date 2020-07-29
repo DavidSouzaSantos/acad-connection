@@ -111,9 +111,10 @@ namespace WebApiAcadConnection.DAL
             try
             {
                 ComandoSql.Connection = ObterConexao();
-                ComandoSql.CommandText = pSql;
+                ComandoSql.CommandText = pSql + "; SELECT SCOPE_IDENTITY()";
+                object retornoCodigo = ComandoSql.ExecuteScalar();
 
-                return Convert.ToInt32(ComandoSql.ExecuteScalar());
+                return Convert.ToInt32(retornoCodigo);
             }
             catch (Exception ex)
             {
