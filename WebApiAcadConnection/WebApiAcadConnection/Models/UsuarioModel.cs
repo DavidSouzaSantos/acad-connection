@@ -50,13 +50,11 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public UsuarioDTO Atualizar(UsuarioDTO usuario)
+        public UsuarioDTO Alterar(UsuarioDTO usuario)
         {
             try
             {
-                usuario.Codigo = usuarioDAO.Atualizar(usuario);
-
-                if (usuario.Codigo == null || usuario.Codigo.Value == 0)
+                if (!usuarioDAO.Alterar(usuario))
                     throw new Exception("Erro ao alterar usuário");
 
                 return usuario;
@@ -71,12 +69,10 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                int codigo = usuarioDAO.Excluir(pCodigo);
-
-                if (codigo == 0)
+                if (usuarioDAO.Excluir(pCodigo))
                     throw new Exception("Erro ao excluir usuário");
 
-                return codigo;
+                return pCodigo;
             }
             catch (Exception ex)
             {

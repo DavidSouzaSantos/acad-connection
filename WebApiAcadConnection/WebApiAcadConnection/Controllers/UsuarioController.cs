@@ -13,7 +13,7 @@ namespace WebApiAcadConnection.Controllers
         UsuarioModel usuarioModel = new UsuarioModel();
 
         [HttpGet]
-        [Route("ConsultarUsuarioPorCodigo/{pCodigo}")]
+        [Route("{pCodigo}")]
         public IHttpActionResult ConsultarUsuarioPorCodigo(int pCodigo)
         {
             try
@@ -23,7 +23,6 @@ namespace WebApiAcadConnection.Controllers
             }
             catch (Exception ex)
             {
-
                 return InternalServerError(ex);
             }
         }
@@ -39,7 +38,36 @@ namespace WebApiAcadConnection.Controllers
             }
             catch (Exception ex)
             {
+                return InternalServerError(ex);
+            }
+        }
 
+        [HttpPut]
+        [Route("Alterar")]
+        public IHttpActionResult Alterar(UsuarioDTO pUsuario)
+        {
+            try
+            {
+                pUsuario = usuarioModel.Alterar(pUsuario);
+                return Ok(pUsuario);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [HttpDelete]
+        [Route("{pCodigo}/Excluir")]
+        public IHttpActionResult Excluir(int pCodigo)
+        {
+            try
+            {
+                pCodigo = usuarioModel.Excluir(pCodigo);
+                return Ok(pCodigo);
+            }
+            catch (Exception ex)
+            {
                 return InternalServerError(ex);
             }
         }

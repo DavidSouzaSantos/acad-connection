@@ -102,11 +102,11 @@ namespace WebApiAcadConnection.DAL
         }
 
         ///<summary>
-        ///Método executa select no banco de dados
+        ///Método executa script de cadastro no banco de dados
         ///</summary>
         ///<param name="pSql">Comando SQL</param>
-        ///<returns>Retorna true se comando foi executado com sucesso</returns>
-        public int ExecutaComando(string pSql)
+        ///<returns>Retorna o código do registro que foi executado com sucesso</returns>
+        public int ExecutarCadastrar(string pSql)
         {
             try
             {
@@ -115,6 +115,30 @@ namespace WebApiAcadConnection.DAL
                 object retornoCodigo = ComandoSql.ExecuteScalar();
 
                 return Convert.ToInt32(retornoCodigo);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                ConexaoSql.Close();
+            }
+        }
+
+        ///<summary>
+        ///Método executa comando no banco de dados
+        ///</summary>
+        ///<param name="pSql">Comando SQL</param>
+        ///<returns>Retorna true se o sql for executado com sucesso</returns>
+        public bool ExecutarComando(string pSql)
+        {
+            try
+            {
+                ComandoSql.Connection = ObterConexao();
+                ComandoSql.CommandText = pSql;
+
+                return ComandoSql.ExecuteNonQuery() > 0;
             }
             catch (Exception ex)
             {

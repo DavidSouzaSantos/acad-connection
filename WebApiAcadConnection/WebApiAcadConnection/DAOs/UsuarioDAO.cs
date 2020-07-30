@@ -74,7 +74,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@USUSENHA", SqlDbType.VarChar, pUsuario.Senha);
                 AcessoBD.AdicionarParametro("@USUPERFIL", SqlDbType.SmallInt, Convert.ToInt32(pUsuario.Perfil.GetValueOrDefault()));
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarCadastrar(sql);
             }
             catch (Exception ex)
             {
@@ -82,7 +82,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Atualizar(UsuarioDTO pUsuario)
+        public bool Alterar(UsuarioDTO pUsuario)
         {
             try
             {
@@ -97,7 +97,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@USUSENHA", SqlDbType.VarChar, pUsuario.Senha);
                 AcessoBD.AdicionarParametro("@USUPERFIL", SqlDbType.SmallInt, Convert.ToInt32(pUsuario.Perfil.GetValueOrDefault()));
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {
@@ -105,7 +105,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Excluir(int pCodigo)
+        public bool Excluir(int pCodigo)
         {
             try
             {
@@ -114,7 +114,7 @@ namespace WebApiAcadConnection.DAOs
                 string sql = @"DELETE FROM USUARIO WHERE USUCOD=@USUCOD";
                 AcessoBD.AdicionarParametro("@USUCOD", SqlDbType.BigInt, pCodigo);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {
