@@ -122,7 +122,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@INSUSUCOD", SqlDbType.VarChar, pInstituicao.Usuario.Codigo);
                 AcessoBD.AdicionarParametro("@INSDATACRIACAO", SqlDbType.VarChar, pInstituicao.DataCriacao);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarCadastrar(sql);
             }
             catch (Exception ex)
             {
@@ -130,7 +130,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Atualizar(InstituicaoDTO pInstituicao)
+        public bool Atualizar(InstituicaoDTO pInstituicao)
         {
             try
             {
@@ -149,7 +149,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@INSUSUCOD", SqlDbType.VarChar, pInstituicao.Usuario.Codigo);
                 AcessoBD.AdicionarParametro("@INSDATACRIACAO", SqlDbType.VarChar, pInstituicao.DataCriacao);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {
@@ -157,7 +157,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Excluir(int pCodigo)
+        public bool Excluir(int pCodigo)
         {
             try
             {
@@ -166,7 +166,7 @@ namespace WebApiAcadConnection.DAOs
                 string sql = @"DELETE FROM INSTITUICAO WHERE INSCOD=@INSCOD";
                 AcessoBD.AdicionarParametro("@INSCOD", SqlDbType.BigInt, pCodigo);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {

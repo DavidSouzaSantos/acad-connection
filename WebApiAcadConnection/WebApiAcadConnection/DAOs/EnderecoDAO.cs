@@ -89,7 +89,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@ENDESTADO", SqlDbType.VarChar, pEndereco.Estado);
                 AcessoBD.AdicionarParametro("@ENDPAIS", SqlDbType.VarChar, pEndereco.Pais);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarCadastrar(sql);
             }
             catch (Exception ex)
             {
@@ -97,7 +97,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Atualizar(EnderecoDTO pEndereco)
+        public bool Atualizar(EnderecoDTO pEndereco)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@ENDESTADO", SqlDbType.VarChar, pEndereco.Estado);
                 AcessoBD.AdicionarParametro("@ENDPAIS", SqlDbType.VarChar, pEndereco.Pais);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {
@@ -125,7 +125,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Excluir(int pCodigo)
+        public bool Excluir(int pCodigo)
         {
             try
             {
@@ -134,7 +134,7 @@ namespace WebApiAcadConnection.DAOs
                 string sql = @"DELETE FROM ENDERECO WHERE ENDCOD=@ENDCOD";
                 AcessoBD.AdicionarParametro("@ENDCOD", SqlDbType.BigInt, pCodigo);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {

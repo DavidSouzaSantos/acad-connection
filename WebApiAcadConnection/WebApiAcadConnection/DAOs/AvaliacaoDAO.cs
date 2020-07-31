@@ -96,7 +96,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@AVAPESO", SqlDbType.DateTime, pAvaliacao.Peso);
                 AcessoBD.AdicionarParametro("@AVADATACRIACAO", SqlDbType.DateTime, pAvaliacao.DataCriacao);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarCadastrar(sql);
             }
             catch (Exception ex)
             {
@@ -104,7 +104,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Atualizar(AvaliacaoDTO pAvaliacao)
+        public bool Atualizar(AvaliacaoDTO pAvaliacao)
         {
             try
             {
@@ -120,7 +120,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@AVAPESO", SqlDbType.SmallInt, pAvaliacao.Peso);
                 AcessoBD.AdicionarParametro("@AVADATACRIACAO", SqlDbType.DateTime, pAvaliacao.DataCriacao);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {
@@ -128,7 +128,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Excluir(int pCodigo)
+        public bool Excluir(int pCodigo)
         {
             try
             {
@@ -137,7 +137,7 @@ namespace WebApiAcadConnection.DAOs
                 string sql = @"DELETE FROM AVALIACAO WHERE AVACOD=@AVACOD";
                 AcessoBD.AdicionarParametro("@AVACOD", SqlDbType.BigInt, pCodigo);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {

@@ -75,7 +75,7 @@ namespace WebApiAcadConnection.DAOs
 
                 AcessoBD.AdicionarParametro("@DISNOME", SqlDbType.VarChar, pDisciplina.Nome);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarCadastrar(sql);
             }
             catch (Exception ex)
             {
@@ -83,7 +83,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Atualizar(DisciplinaDTO pDisciplina)
+        public bool Atualizar(DisciplinaDTO pDisciplina)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@DISCOD", SqlDbType.BigInt, pDisciplina.Codigo);
                 AcessoBD.AdicionarParametro("@DISNOME", SqlDbType.VarChar, pDisciplina.Nome);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {
@@ -104,7 +104,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Excluir(int pCodigo)
+        public bool Excluir(int pCodigo)
         {
             try
             {
@@ -113,7 +113,7 @@ namespace WebApiAcadConnection.DAOs
                 string sql = @"DELETE FROM DISCIPLINA WHERE DISCOD=@DISCOD";
                 AcessoBD.AdicionarParametro("@DISCOD", SqlDbType.BigInt, pCodigo);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {

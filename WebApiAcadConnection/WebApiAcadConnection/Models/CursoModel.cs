@@ -54,9 +54,7 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                curso.Codigo = cursoDAO.Atualizar(curso);
-
-                if (curso.Codigo == null || curso.Codigo.Value == 0)
+                if (!cursoDAO.Atualizar(curso))
                     throw new Exception("Erro ao alterar curso");
 
                 return curso;
@@ -71,12 +69,10 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                int codigo = cursoDAO.Excluir(pCodigo);
-
-                if (codigo == 0)
+                if(!cursoDAO.Excluir(pCodigo))
                     throw new Exception("Erro ao excluir curso");
 
-                return codigo;
+                return pCodigo;
             }
             catch (Exception ex)
             {

@@ -54,9 +54,7 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                instituicao.Codigo = disciplinaDAO.Atualizar(instituicao);
-
-                if (instituicao.Codigo == null || instituicao.Codigo.Value == 0)
+                if (!disciplinaDAO.Atualizar(instituicao))
                     throw new Exception("Erro ao alterar instituição");
 
                 return instituicao;
@@ -71,12 +69,10 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                int codigo = disciplinaDAO.Excluir(pCodigo);
-
-                if (codigo == 0)
+                if (!disciplinaDAO.Excluir(pCodigo))
                     throw new Exception("Erro ao excluir instituição");
 
-                return codigo;
+                return pCodigo;
             }
             catch (Exception ex)
             {

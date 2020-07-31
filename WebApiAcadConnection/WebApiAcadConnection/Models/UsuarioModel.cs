@@ -69,7 +69,7 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                if (usuarioDAO.Excluir(pCodigo))
+                if (!usuarioDAO.Excluir(pCodigo))
                     throw new Exception("Erro ao excluir usuário");
 
                 return pCodigo;

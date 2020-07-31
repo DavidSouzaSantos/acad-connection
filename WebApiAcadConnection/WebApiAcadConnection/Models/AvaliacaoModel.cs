@@ -54,9 +54,7 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                avaliacao.Codigo = avaliacaoDAO.Atualizar(avaliacao);
-
-                if (avaliacao.Codigo == null || avaliacao.Codigo.Value == 0)
+                if (!avaliacaoDAO.Atualizar(avaliacao))
                     throw new Exception("Erro ao alterar avaliação");
 
                 return avaliacao;
@@ -71,12 +69,10 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                int codigo = avaliacaoDAO.Excluir(pCodigo);
-
-                if (codigo == 0)
+                if (!avaliacaoDAO.Excluir(pCodigo))
                     throw new Exception("Erro ao excluir avaliação");
 
-                return codigo;
+                return pCodigo;
             }
             catch (Exception ex)
             {

@@ -124,7 +124,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@CURDISCOD", SqlDbType.VarChar, pCurso.Disciplina.Codigo);
                 AcessoBD.AdicionarParametro("@CURDATACRIACAO", SqlDbType.DateTime, pCurso.DataCriacao);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarCadastrar(sql);
             }
             catch (Exception ex)
             {
@@ -132,7 +132,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Atualizar(CursoDTO pCurso)
+        public bool Atualizar(CursoDTO pCurso)
         {
             try
             {
@@ -152,7 +152,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@CURDISCOD", SqlDbType.VarChar, pCurso.Disciplina.Codigo);
                 AcessoBD.AdicionarParametro("@CURDATACRIACAO", SqlDbType.DateTime, pCurso.DataCriacao);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {
@@ -160,7 +160,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Excluir(int pCodigo)
+        public bool Excluir(int pCodigo)
         {
             try
             {
@@ -169,7 +169,7 @@ namespace WebApiAcadConnection.DAOs
                 string sql = @"DELETE FROM CURSO WHERE CURCOD=@CURCOD";
                 AcessoBD.AdicionarParametro("@CURCOD", SqlDbType.BigInt, pCodigo);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {

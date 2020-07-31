@@ -52,9 +52,7 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                nota.Codigo = notaDAO.Atualizar(nota);
-
-                if (nota.Codigo == null || nota.Codigo.Value == 0)
+                if (!notaDAO.Atualizar(nota))
                     throw new Exception("Erro ao alterar nota");
 
                 return nota;
@@ -69,12 +67,10 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                int codigo = notaDAO.Excluir(pCodigo);
-
-                if (codigo == 0)
+                if (!notaDAO.Excluir(pCodigo))
                     throw new Exception("Erro ao excluir nota");
 
-                return codigo;
+                return pCodigo;
             }
             catch (Exception ex)
             {

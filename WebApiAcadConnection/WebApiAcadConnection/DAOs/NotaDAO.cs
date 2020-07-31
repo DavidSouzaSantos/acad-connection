@@ -90,7 +90,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@NOTALUCOD", SqlDbType.BigInt, pNota.Aluno.Codigo);
                 AcessoBD.AdicionarParametro("@NOTDATACRIACAO", SqlDbType.DateTime, pNota.DataCriacao);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarCadastrar(sql);
             }
             catch (Exception ex)
             {
@@ -98,7 +98,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Atualizar(NotaDTO pNota)
+        public bool Atualizar(NotaDTO pNota)
         {
             try
             {
@@ -114,7 +114,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@NOTALUCOD", SqlDbType.BigInt, pNota.Aluno.Codigo);
                 AcessoBD.AdicionarParametro("@NOTDATACRIACAO", SqlDbType.DateTime, pNota.DataCriacao);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {
@@ -122,7 +122,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Excluir(int pCodigo)
+        public bool Excluir(int pCodigo)
         {
             try
             {
@@ -131,7 +131,7 @@ namespace WebApiAcadConnection.DAOs
                 string sql = @"DELETE FROM NOTA WHERE NOTCOD=@NOTCOD";
                 AcessoBD.AdicionarParametro("@NOTCOD", SqlDbType.BigInt, pCodigo);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {

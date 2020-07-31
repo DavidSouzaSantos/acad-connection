@@ -70,9 +70,7 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                aluno.Codigo = alunoDAO.Atualizar(aluno);
-
-                if (aluno.Codigo == null || aluno.Codigo.Value == 0)
+                if (!alunoDAO.Atualizar(aluno))
                     throw new Exception("Erro ao alterar aluno");
 
                 return aluno;
@@ -87,12 +85,10 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                int codigo = alunoDAO.Excluir(pCodigo);
-
-                if (codigo == 0)
+                if (!alunoDAO.Excluir(pCodigo))
                     throw new Exception("Erro ao excluir aluno");
 
-                return codigo;
+                return pCodigo;
             }
             catch (Exception ex)
             {
@@ -100,7 +96,7 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public int VincularCurso(AlunoCursoDTO alunoCursoDTO)
+        public AlunoCursoDTO VincularCurso(AlunoCursoDTO alunoCursoDTO)
         {
             try
             {
@@ -109,7 +105,7 @@ namespace WebApiAcadConnection.Models
                 if (codigo == 0)
                     throw new Exception("Erro ao vincular curso");
 
-                return codigo;
+                return alunoCursoDTO;
             }
             catch (Exception ex)
             {
@@ -117,17 +113,15 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public int DesvincularCurso(AlunoCursoDTO alunoCursoDTO)
+        public AlunoCursoDTO DesvincularCurso(AlunoCursoDTO alunoCursoDTO)
         {
             try
             {
                 alunoCursoDTO.Ativo = !alunoCursoDTO.Ativo;
-                int codigo = alunoCursoDAO.Atualizar(alunoCursoDTO);
-
-                if (codigo == 0)
+                if (!alunoCursoDAO.Atualizar(alunoCursoDTO))
                     throw new Exception("Erro ao vincular curso");
 
-                return codigo;
+                return alunoCursoDTO;
             }
             catch (Exception ex)
             {

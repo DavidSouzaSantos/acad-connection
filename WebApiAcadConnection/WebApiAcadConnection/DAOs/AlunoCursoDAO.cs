@@ -190,7 +190,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@ACALUCOD", SqlDbType.BigInt, pAlunoCurso.Aluno.Codigo);
                 AcessoBD.AdicionarParametro("@ACCURCOD", SqlDbType.BigInt, pAlunoCurso.Curso.Codigo);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarCadastrar(sql);
             }
             catch (Exception ex)
             {
@@ -198,7 +198,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Atualizar(AlunoCursoDTO pAlunoCurso)
+        public bool Atualizar(AlunoCursoDTO pAlunoCurso)
         {
             try
             {
@@ -213,7 +213,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@ACCURCOD", SqlDbType.BigInt, pAlunoCurso.Curso.Codigo);
                 AcessoBD.AdicionarParametro("@ACATIVO", SqlDbType.Bit, pAlunoCurso.Ativo);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {
@@ -221,7 +221,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Excluir(int pCodigoAluno, int pCodigoCurso)
+        public bool Excluir(int pCodigoAluno, int pCodigoCurso)
         {
             try
             {
@@ -232,7 +232,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@ACALUCOD", SqlDbType.BigInt, pCodigoAluno);
                 AcessoBD.AdicionarParametro("@ACCURCOD", SqlDbType.BigInt, pCodigoCurso);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {

@@ -135,7 +135,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@PROINSCOD", SqlDbType.VarChar, pProfessor.Instituicao.Codigo);
                 AcessoBD.AdicionarParametro("@PRODATACRIACAO", SqlDbType.VarChar, pProfessor.DataCriacao);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarCadastrar(sql);
             }
             catch (Exception ex)
             {
@@ -143,7 +143,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Atualizar(ProfessorDTO pProfessor)
+        public bool Atualizar(ProfessorDTO pProfessor)
         {
             try
             {
@@ -165,7 +165,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@PROUSUCOD", SqlDbType.VarChar, pProfessor.Usuario.Codigo);
                 AcessoBD.AdicionarParametro("@PROINSCOD", SqlDbType.VarChar, pProfessor.Instituicao.Codigo);
                 AcessoBD.AdicionarParametro("@PRODATACRIACAO", SqlDbType.VarChar, pProfessor.DataCriacao);
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {
@@ -173,7 +173,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Excluir(int pCodigo)
+        public bool Excluir(int pCodigo)
         {
             try
             {
@@ -182,7 +182,7 @@ namespace WebApiAcadConnection.DAOs
                 string sql = @"DELETE FROM PROFESSOR WHERE PROCOD=@PROCOD";
                 AcessoBD.AdicionarParametro("@PROCOD", SqlDbType.BigInt, pCodigo);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {

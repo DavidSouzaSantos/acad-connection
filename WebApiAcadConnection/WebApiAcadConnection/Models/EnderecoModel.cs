@@ -54,9 +54,7 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                endereco.Codigo = enderecoDAO.Atualizar(endereco);
-
-                if (endereco.Codigo == null || endereco.Codigo.Value == 0)
+                if (!enderecoDAO.Atualizar(endereco))
                     throw new Exception("Erro ao alterar endereço");
 
                 return endereco;
@@ -71,12 +69,10 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                int codigo = enderecoDAO.Excluir(pCodigo);
-
-                if (codigo == 0)
+                if (!enderecoDAO.Excluir(pCodigo))
                     throw new Exception("Erro ao excluir endereço");
 
-                return codigo;
+                return pCodigo;
             }
             catch (Exception ex)
             {

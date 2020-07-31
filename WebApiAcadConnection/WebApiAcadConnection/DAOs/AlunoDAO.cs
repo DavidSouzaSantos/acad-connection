@@ -124,7 +124,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@ALUUSUCOD", SqlDbType.VarChar, pAluno.Usuario.Codigo);
                 AcessoBD.AdicionarParametro("@ALUDDATACRIACAO", SqlDbType.VarChar, pAluno.DataCriacao);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarCadastrar(sql);
             }
             catch (Exception ex)
             {
@@ -132,7 +132,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Atualizar(AlunoDTO pAluno)
+        public bool Atualizar(AlunoDTO pAluno)
         {
             try
             {
@@ -150,7 +150,7 @@ namespace WebApiAcadConnection.DAOs
                 AcessoBD.AdicionarParametro("@ALUTELEFONE", SqlDbType.VarChar, pAluno.Telefone);
                 AcessoBD.AdicionarParametro("@ALUDDATACRIACAO", SqlDbType.VarChar, pAluno.DataCriacao);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {
@@ -158,7 +158,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public int Excluir(int pCodigo)
+        public bool Excluir(int pCodigo)
         {
             try
             {
@@ -167,7 +167,7 @@ namespace WebApiAcadConnection.DAOs
                 string sql = @"DELETE FROM ALUNO WHERE ALUCOD=@ALUCOD";
                 AcessoBD.AdicionarParametro("@ALUCOD", SqlDbType.BigInt, pCodigo);
 
-                return AcessoBD.ExecutaComando(sql);
+                return AcessoBD.ExecutarComando(sql);
             }
             catch (Exception ex)
             {

@@ -54,9 +54,7 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                professor.Codigo = professorDAO.Atualizar(professor);
-
-                if (professor.Codigo == null || professor.Codigo.Value == 0)
+                if (!professorDAO.Atualizar(professor))
                     throw new Exception("Erro ao alterar professor");
 
                 return professor;
@@ -71,12 +69,10 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                int codigo = professorDAO.Excluir(pCodigo);
-
-                if (codigo == 0)
+                if (!professorDAO.Excluir(pCodigo))
                     throw new Exception("Erro ao excluir professor");
 
-                return codigo;
+                return pCodigo;
             }
             catch (Exception ex)
             {
