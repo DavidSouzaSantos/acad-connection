@@ -98,7 +98,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public bool Atualizar(NotaDTO pNota)
+        public bool Alterar(NotaDTO pNota)
         {
             try
             {

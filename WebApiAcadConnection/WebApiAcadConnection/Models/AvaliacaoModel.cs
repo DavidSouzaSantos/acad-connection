@@ -50,11 +50,11 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public AvaliacaoDTO Atualizar(AvaliacaoDTO avaliacao)
+        public AvaliacaoDTO Alterar(AvaliacaoDTO avaliacao)
         {
             try
             {
-                if (!avaliacaoDAO.Atualizar(avaliacao))
+                if (!avaliacaoDAO.Alterar(avaliacao))
                     throw new Exception("Erro ao alterar avaliação");
 
                 return avaliacao;

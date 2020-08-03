@@ -50,11 +50,11 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public DisciplinaDTO Atualizar(DisciplinaDTO disciplina)
+        public DisciplinaDTO Alterar(DisciplinaDTO disciplina)
         {
             try
             {
-                if (!disciplinaDAO.Atualizar(disciplina))
+                if (!disciplinaDAO.Alterar(disciplina))
                     throw new Exception("Erro ao alterar disciplina");
 
                 return disciplina;

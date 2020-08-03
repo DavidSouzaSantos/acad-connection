@@ -198,7 +198,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public bool Atualizar(AlunoCursoDTO pAlunoCurso)
+        public bool Alterar(AlunoCursoDTO pAlunoCurso)
         {
             try
             {

@@ -130,7 +130,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public bool Atualizar(InstituicaoDTO pInstituicao)
+        public bool Alterar(InstituicaoDTO pInstituicao)
         {
             try
             {

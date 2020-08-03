@@ -132,7 +132,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public bool Atualizar(AlunoDTO pAluno)
+        public bool Alterar(AlunoDTO pAluno)
         {
             try
             {

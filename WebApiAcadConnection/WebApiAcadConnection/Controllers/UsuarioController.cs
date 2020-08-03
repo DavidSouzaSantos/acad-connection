@@ -18,6 +18,9 @@ namespace WebApiAcadConnection.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
                 UsuarioDTO usuario = usuarioModel.ConsultarPorCodigo(pCodigo);
                 return Ok(usuario);
             }
@@ -33,6 +36,9 @@ namespace WebApiAcadConnection.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
                 pUsuario = usuarioModel.Cadastrar(pUsuario);
                 return Ok(pUsuario);
             }
@@ -48,6 +54,9 @@ namespace WebApiAcadConnection.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
                 pUsuario = usuarioModel.Alterar(pUsuario);
                 return Ok(pUsuario);
             }
@@ -63,6 +72,9 @@ namespace WebApiAcadConnection.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState); 
+
                 pCodigo = usuarioModel.Excluir(pCodigo);
                 return Ok(pCodigo);
             }

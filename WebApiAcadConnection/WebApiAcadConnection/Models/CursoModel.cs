@@ -50,11 +50,11 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public CursoDTO Atualizar(CursoDTO curso)
+        public CursoDTO Alterar(CursoDTO curso)
         {
             try
             {
-                if (!cursoDAO.Atualizar(curso))
+                if (!cursoDAO.Alterar(curso))
                     throw new Exception("Erro ao alterar curso");
 
                 return curso;

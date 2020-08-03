@@ -48,11 +48,11 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public NotaDTO Atualizar(NotaDTO nota)
+        public NotaDTO Alterar(NotaDTO nota)
         {
             try
             {
-                if (!notaDAO.Atualizar(nota))
+                if (!notaDAO.Alterar(nota))
                     throw new Exception("Erro ao alterar nota");
 
                 return nota;

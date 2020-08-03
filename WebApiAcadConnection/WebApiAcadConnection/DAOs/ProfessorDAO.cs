@@ -143,7 +143,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public bool Atualizar(ProfessorDTO pProfessor)
+        public bool Alterar(ProfessorDTO pProfessor)
         {
             try
             {

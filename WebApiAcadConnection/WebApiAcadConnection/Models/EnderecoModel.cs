@@ -50,11 +50,11 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public EnderecoDTO Atualizar(EnderecoDTO endereco)
+        public EnderecoDTO Alterar(EnderecoDTO endereco)
         {
             try
             {
-                if (!enderecoDAO.Atualizar(endereco))
+                if (!enderecoDAO.Alterar(endereco))
                     throw new Exception("Erro ao alterar endereço");
 
                 return endereco;

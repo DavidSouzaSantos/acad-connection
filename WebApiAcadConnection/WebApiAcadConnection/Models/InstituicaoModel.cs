@@ -50,11 +50,11 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public InstituicaoDTO Atualizar(InstituicaoDTO instituicao)
+        public InstituicaoDTO Alterar(InstituicaoDTO instituicao)
         {
             try
             {
-                if (!disciplinaDAO.Atualizar(instituicao))
+                if (!disciplinaDAO.Alterar(instituicao))
                     throw new Exception("Erro ao alterar instituição");
 
                 return instituicao;

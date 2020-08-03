@@ -47,11 +47,11 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
-                EnderecoDAO enderecoDAO = new EnderecoDAO();
-                aluno.Endereco.Codigo = enderecoDAO.Cadastrar(aluno.Endereco);
+                EnderecoModel enderecoModel = new EnderecoModel();
+                aluno.Endereco = enderecoModel.Cadastrar(aluno.Endereco);
 
-                UsuarioDAO usuarioDAO = new UsuarioDAO();
-                aluno.Usuario.Codigo = usuarioDAO.Cadastrar(aluno.Usuario);
+                UsuarioModel usuarioModel = new UsuarioModel();
+                aluno.Usuario = usuarioModel.Cadastrar(aluno.Usuario);
 
                 aluno.Codigo = alunoDAO.Cadastrar(aluno);
 
@@ -66,11 +66,24 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public AlunoDTO Atualizar(AlunoDTO aluno)
+        public AlunoDTO Alterar(AlunoDTO aluno)
         {
             try
             {
-                if (!alunoDAO.Atualizar(aluno))
+
+                if (aluno.Endereco != null && (aluno.Endereco.Codigo != null && aluno.Endereco.Codigo > 0))
+                {
+                    EnderecoModel enderecoModel = new EnderecoModel();
+                    aluno.Endereco = enderecoModel.Alterar(aluno.Endereco);
+                }
+
+                if (aluno.Usuario != null && (aluno.Usuario.Codigo != null && aluno.Usuario.Codigo > 0))
+                {
+                    UsuarioModel usuarioModel = new UsuarioModel();
+                    aluno.Usuario = usuarioModel.Alterar(aluno.Usuario);
+                }
+
+                if (!alunoDAO.Alterar(aluno))
                     throw new Exception("Erro ao alterar aluno");
 
                 return aluno;
@@ -85,6 +98,13 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
+                AlunoDTO aluno = alunoDAO.ConsultarPorCodigo(pCodigo);
+
+                if(aluno==null)
+                    throw new Exception("Aluno não encontrado");
+
+
+
                 if (!alunoDAO.Excluir(pCodigo))
                     throw new Exception("Erro ao excluir aluno");
 
@@ -118,7 +138,7 @@ namespace WebApiAcadConnection.Models
             try
             {
                 alunoCursoDTO.Ativo = !alunoCursoDTO.Ativo;
-                if (!alunoCursoDAO.Atualizar(alunoCursoDTO))
+                if (!alunoCursoDAO.Alterar(alunoCursoDTO))
                     throw new Exception("Erro ao vincular curso");
 
                 return alunoCursoDTO;

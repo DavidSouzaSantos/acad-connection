@@ -83,7 +83,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public bool Atualizar(DisciplinaDTO pDisciplina)
+        public bool Alterar(DisciplinaDTO pDisciplina)
         {
             try
             {

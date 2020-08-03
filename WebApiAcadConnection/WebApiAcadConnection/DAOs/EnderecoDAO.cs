@@ -97,7 +97,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public bool Atualizar(EnderecoDTO pEndereco)
+        public bool Alterar(EnderecoDTO pEndereco)
         {
             try
             {

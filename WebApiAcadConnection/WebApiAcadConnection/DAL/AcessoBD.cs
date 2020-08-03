@@ -74,8 +74,10 @@ namespace WebApiAcadConnection.DAL
         ///<returns>DataTable da consulta</returns>
         public DataTable ExecutarConsulta(string pSql)
         {
+            SqlTransaction transactionSql = ConexaoSql.BeginTransaction();
             try
             {
+
                 ComandoSql.Connection = ObterConexao();
                 ComandoSql.CommandText = pSql;
                 ComandoSql.ExecuteScalar();
@@ -85,13 +87,14 @@ namespace WebApiAcadConnection.DAL
                 DataTable dtResult = new DataTable();
                 dtResult.Load(dtReader);
 
-                ConexaoSql.Close();
+                transactionSql.Commit();
 
                 return dtResult;
 
             }
             catch (Exception ex)
             {
+                transactionSql.Rollback();
                 throw ex;
             }
             finally
@@ -108,16 +111,20 @@ namespace WebApiAcadConnection.DAL
         ///<returns>Retorna o código do registro que foi executado com sucesso</returns>
         public int ExecutarCadastrar(string pSql)
         {
+            SqlTransaction transactionSql = ConexaoSql.BeginTransaction();
             try
             {
                 ComandoSql.Connection = ObterConexao();
                 ComandoSql.CommandText = pSql + "; SELECT SCOPE_IDENTITY()";
                 object retornoCodigo = ComandoSql.ExecuteScalar();
 
+                transactionSql.Commit();
+
                 return Convert.ToInt32(retornoCodigo);
             }
             catch (Exception ex)
             {
+                transactionSql.Rollback();
                 throw ex;
             }
             finally
@@ -133,15 +140,19 @@ namespace WebApiAcadConnection.DAL
         ///<returns>Retorna true se o sql for executado com sucesso</returns>
         public bool ExecutarComando(string pSql)
         {
+            SqlTransaction transactionSql = ConexaoSql.BeginTransaction();
             try
             {
                 ComandoSql.Connection = ObterConexao();
                 ComandoSql.CommandText = pSql;
 
+                transactionSql.Commit();
+
                 return ComandoSql.ExecuteNonQuery() > 0;
             }
             catch (Exception ex)
             {
+                transactionSql.Rollback();
                 throw ex;
             }
             finally

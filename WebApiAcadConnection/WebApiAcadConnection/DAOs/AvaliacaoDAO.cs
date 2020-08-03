@@ -104,7 +104,7 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
-        public bool Atualizar(AvaliacaoDTO pAvaliacao)
+        public bool Alterar(AvaliacaoDTO pAvaliacao)
         {
             try
             {

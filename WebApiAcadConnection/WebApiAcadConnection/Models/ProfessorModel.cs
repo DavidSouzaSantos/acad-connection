@@ -50,11 +50,11 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public ProfessorDTO Atualizar(ProfessorDTO professor)
+        public ProfessorDTO Alterar(ProfessorDTO professor)
         {
             try
             {
-                if (!professorDAO.Atualizar(professor))
+                if (!professorDAO.Alterar(professor))
                     throw new Exception("Erro ao alterar professor");
 
                 return professor;
