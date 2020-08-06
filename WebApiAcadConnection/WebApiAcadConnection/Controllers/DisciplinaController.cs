@@ -1,33 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using System.Web.Routing;
 using WebApiAcadConnection.DTOs;
 using WebApiAcadConnection.Models;
 
-
 namespace WebApiAcadConnection.Controllers
 {
-    [RoutePrefix("WebApiAcadConnection/Usuario")]
-    public class UsuarioController : ApiController
+    [RoutePrefix("WebApiAcadConnection/Disciplina")]
+    public class DisciplinaController : ApiController
     {
-        UsuarioModel usuarioModel = new UsuarioModel();
+        DisciplinaModel disciplinaModel = new DisciplinaModel();
 
         [HttpGet]
-        [Route("{pCodigo}")]
-        public IHttpActionResult ConsultarUsuarioPorCodigo(int pCodigo)
+        [Route("ConsultarPorInstituicao/{pCodigoInstituicao}")]
+        public IHttpActionResult ConsultarPorInstituicao(int pCodigoInstituicao)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
 
-                UsuarioDTO usuario = usuarioModel.ConsultarPorCodigo(pCodigo);
+                List<DisciplinaDTO> disciplinas = disciplinaModel.ConsultarPorInstituicao(pCodigoInstituicao);
 
-                if (usuario == null)
+                if (disciplinas == null || disciplinas.Count <= 0)
                     return NotFound();
 
-                return Ok(usuario);
+                return Ok(disciplinas);
             }
             catch (Exception ex)
             {
@@ -37,15 +36,15 @@ namespace WebApiAcadConnection.Controllers
 
         [HttpPost]
         [Route("Cadastrar")]
-        public IHttpActionResult Cadastrar(UsuarioDTO pUsuario)
+        public IHttpActionResult Cadastrar(DisciplinaDTO pDisciplina)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
 
-                pUsuario = usuarioModel.Cadastrar(pUsuario);
-                return Ok(pUsuario);
+                pDisciplina = disciplinaModel.Cadastrar(pDisciplina);
+                return Ok(pDisciplina);
             }
             catch (Exception ex)
             {
@@ -55,15 +54,15 @@ namespace WebApiAcadConnection.Controllers
 
         [HttpPut]
         [Route("Alterar")]
-        public IHttpActionResult Alterar(UsuarioDTO pUsuario)
+        public IHttpActionResult Alterar(DisciplinaDTO pDisciplina)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
 
-                pUsuario = usuarioModel.Alterar(pUsuario);
-                return Ok(pUsuario);
+                pDisciplina = disciplinaModel.Alterar(pDisciplina);
+                return Ok(pDisciplina);
             }
             catch (Exception ex)
             {
@@ -80,7 +79,7 @@ namespace WebApiAcadConnection.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
 
-                pCodigo = usuarioModel.Excluir(pCodigo);
+                pCodigo = disciplinaModel.Excluir(pCodigo);
                 return Ok(pCodigo);
             }
             catch (Exception ex)

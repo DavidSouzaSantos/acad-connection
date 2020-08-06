@@ -16,11 +16,11 @@ namespace WebApiAcadConnection.Models
             disciplinaDAO = new InstituicaoDAO();
         }
 
-        public InstituicaoDTO ConsultarPorInstituicao(int pCodigoInstituicao)
+        public InstituicaoDTO ConsultarPorCodigo(int pCodigo)
         {
             try
             {
-                InstituicaoDTO disciplinas = disciplinaDAO.ConsultarPorCodigo(pCodigoInstituicao);
+                InstituicaoDTO disciplinas = disciplinaDAO.ConsultarPorCodigo(pCodigo);
 
                 if (disciplinas == null)
                     throw new Exception("Instituição não encontrado");

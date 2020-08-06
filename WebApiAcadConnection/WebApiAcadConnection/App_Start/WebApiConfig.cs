@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 
 namespace WebApiAcadConnection
@@ -9,6 +10,9 @@ namespace WebApiAcadConnection
     {
         public static void Register(HttpConfiguration config)
         {
+            config.Formatters.Clear();
+            config.Formatters.Add(new JsonMediaTypeFormatter());
+
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

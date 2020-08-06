@@ -1,33 +1,31 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Http;
-using System.Web.Routing;
 using WebApiAcadConnection.DTOs;
 using WebApiAcadConnection.Models;
 
-
 namespace WebApiAcadConnection.Controllers
 {
-    [RoutePrefix("WebApiAcadConnection/Usuario")]
-    public class UsuarioController : ApiController
+    [RoutePrefix("WebApiAcadConnection/Instituicao")]
+    public class InstituicaoController : ApiController
     {
-        UsuarioModel usuarioModel = new UsuarioModel();
+        InstituicaoModel disciplinaModel = new InstituicaoModel();
 
         [HttpGet]
         [Route("{pCodigo}")]
-        public IHttpActionResult ConsultarUsuarioPorCodigo(int pCodigo)
+        public IHttpActionResult ConsultarPorCodigo(int pCodigo)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
 
-                UsuarioDTO usuario = usuarioModel.ConsultarPorCodigo(pCodigo);
+                InstituicaoDTO instituicao = disciplinaModel.ConsultarPorCodigo(pCodigo);
 
-                if (usuario == null)
+                if (instituicao == null)
                     return NotFound();
 
-                return Ok(usuario);
+                return Ok(instituicao);
             }
             catch (Exception ex)
             {
@@ -37,15 +35,15 @@ namespace WebApiAcadConnection.Controllers
 
         [HttpPost]
         [Route("Cadastrar")]
-        public IHttpActionResult Cadastrar(UsuarioDTO pUsuario)
+        public IHttpActionResult Cadastrar(InstituicaoDTO pInstituicao)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
 
-                pUsuario = usuarioModel.Cadastrar(pUsuario);
-                return Ok(pUsuario);
+                pInstituicao = disciplinaModel.Cadastrar(pInstituicao);
+                return Ok(pInstituicao);
             }
             catch (Exception ex)
             {
@@ -55,15 +53,15 @@ namespace WebApiAcadConnection.Controllers
 
         [HttpPut]
         [Route("Alterar")]
-        public IHttpActionResult Alterar(UsuarioDTO pUsuario)
+        public IHttpActionResult Alterar(InstituicaoDTO pInstituicao)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
 
-                pUsuario = usuarioModel.Alterar(pUsuario);
-                return Ok(pUsuario);
+                pInstituicao = disciplinaModel.Alterar(pInstituicao);
+                return Ok(pInstituicao);
             }
             catch (Exception ex)
             {
@@ -80,7 +78,7 @@ namespace WebApiAcadConnection.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
 
-                pCodigo = usuarioModel.Excluir(pCodigo);
+                pCodigo = disciplinaModel.Excluir(pCodigo);
                 return Ok(pCodigo);
             }
             catch (Exception ex)

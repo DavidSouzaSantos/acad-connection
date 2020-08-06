@@ -22,7 +22,7 @@ namespace WebApiAcadConnection.Models
             {
                 UsuarioDTO usuario = usuarioDAO.ConsultarPorCodigo(pCodigo);
 
-                if (usuario.Codigo == null || usuario.Codigo.Value == 0)
+                if (usuario == null)
                     throw new Exception("Usuário não encontrado");
 
                 return usuario;
@@ -69,6 +69,9 @@ namespace WebApiAcadConnection.Models
         {
             try
             {
+                if(usuarioDAO.ConsultarPorCodigo(pCodigo)==null)
+                    throw new Exception("Usuário não existe"); ;
+
                 if (!usuarioDAO.Excluir(pCodigo))
                     throw new Exception("Erro ao excluir usuário");
 
