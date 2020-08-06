@@ -24,7 +24,7 @@ namespace WebApiAcadConnection.DAL
         {
             try
             {
-                string dadosConexao = ConfigurationManager.ConnectionStrings["AcadDBConnectionString"].ConnectionString;
+                string dadosConexao = ConfigurationManager.ConnectionStrings["DevConnection"].ConnectionString;
                 ConexaoSql = new SqlConnection(dadosConexao);
 
                 if (ConexaoSql.State == ConnectionState.Closed)

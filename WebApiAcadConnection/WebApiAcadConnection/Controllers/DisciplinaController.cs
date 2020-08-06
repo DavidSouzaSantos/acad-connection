@@ -19,7 +19,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 List<DisciplinaDTO> disciplinas = disciplinaModel.ConsultarPorInstituicao(pCodigoInstituicao);
 
@@ -41,7 +41,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pDisciplina = disciplinaModel.Cadastrar(pDisciplina);
                 return Ok(pDisciplina);
@@ -59,7 +59,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pDisciplina = disciplinaModel.Alterar(pDisciplina);
                 return Ok(pDisciplina);
@@ -77,7 +77,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pCodigo = disciplinaModel.Excluir(pCodigo);
                 return Ok(pCodigo);

@@ -19,7 +19,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 List<ProfessorDTO> professores = professorModel.ConsultarPorInstituicao(pCodigoInstituicao);
 

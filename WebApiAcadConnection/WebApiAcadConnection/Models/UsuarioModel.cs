@@ -33,6 +33,20 @@ namespace WebApiAcadConnection.Models
             }
         }
 
+        public UsuarioDTO ConsultarUsuarioPorCredenciais(string pLogin, string pSenha)
+        {
+            try
+            {
+                UsuarioDTO usuario = usuarioDAO.ConsultarUsuarioPorCredenciais(pLogin, pSenha);
+
+                return usuario;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public UsuarioDTO Cadastrar(UsuarioDTO usuario)
         {
             try

@@ -13,13 +13,13 @@ namespace WebApiAcadConnection.Controllers
         NotaModel notaModel = new NotaModel();
 
         [HttpGet]
-        [Route("ConsultarPorAvaliacaoAluno/{pCodigoAvaliacao}/{pCodigoAvaliacao}")]
+        [Route("ConsultarPorAvaliacaoAluno/{pCodigoAvaliacao}/{pCodigoAluno}")]
         public IHttpActionResult ConsultarPorAvaliacaoAluno(int pCodigoAvaliacao, int pCodigoAluno)
         {
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 List<NotaDTO> Notas = notaModel.ConsultarPorAvaliacaoAluno(pCodigoAvaliacao, pCodigoAluno);
 
@@ -41,7 +41,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pNota = notaModel.Cadastrar(pNota);
                 return Ok(pNota);
@@ -59,7 +59,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pNota = notaModel.Alterar(pNota);
                 return Ok(pNota);
@@ -77,7 +77,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pCodigo = notaModel.Excluir(pCodigo);
                 return Ok(pCodigo);

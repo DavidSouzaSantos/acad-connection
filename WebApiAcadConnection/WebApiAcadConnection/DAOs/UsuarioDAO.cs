@@ -60,6 +60,53 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        public UsuarioDTO ConsultarUsuarioPorCredenciais(string pLogin, string pSenha)
+        {
+            try
+            {
+                {
+                    string sql = string.Empty;
+
+                    AcessoBD.LimparParanetros();
+                    sql = @"SELECT 
+                           U.USUCOD, 
+                           U.USULOGIN,
+                           U.USUPERFIL
+                        FROM USUARIO U
+                        WHERE U.USULOGIN = @USULOGIN AND
+                              U.USUSENHA = @USUSENHA";
+
+                    AcessoBD.AdicionarParametro("@USULOGIN", SqlDbType.VarChar, pLogin);
+                    AcessoBD.AdicionarParametro("@USUSENHA", SqlDbType.VarChar, pSenha);
+
+                    DataTable dtUsuario = AcessoBD.ExecutarConsulta(sql);
+
+                    if (dtUsuario.Rows.Count > 0)
+                    {
+                        DataRow row = dtUsuario.Rows[0];
+
+                        UsuarioDTO usuario = new UsuarioDTO
+                        {
+                            Codigo = Convert.ToInt32(row["USUCOD"]),
+                            Login = row["USULOGIN"].ToString(),
+                            Perfil = (Enums.PerfilEnum)Convert.ToInt32(row["USUPERFIL"])
+                        };
+
+                        return usuario;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public int Cadastrar(UsuarioDTO pUsuario)
         {
             try

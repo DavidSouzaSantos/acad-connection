@@ -3,11 +3,13 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Routing;
 using WebApiAcadConnection.DTOs;
+using WebApiAcadConnection.Enums;
 using WebApiAcadConnection.Models;
 
 
 namespace WebApiAcadConnection.Controllers
 {
+    [Authorize]
     [RoutePrefix("WebApiAcadConnection/Usuario")]
     public class UsuarioController : ApiController
     {
@@ -20,7 +22,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 UsuarioDTO usuario = usuarioModel.ConsultarPorCodigo(pCodigo);
 
@@ -42,7 +44,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pUsuario = usuarioModel.Cadastrar(pUsuario);
                 return Ok(pUsuario);
@@ -60,7 +62,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pUsuario = usuarioModel.Alterar(pUsuario);
                 return Ok(pUsuario);
@@ -78,7 +80,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pCodigo = usuarioModel.Excluir(pCodigo);
                 return Ok(pCodigo);

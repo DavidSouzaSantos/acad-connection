@@ -18,7 +18,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 EnderecoDTO endereco = enderecoModel.ConsultarPorCodigo(pCodigo);
 
@@ -40,7 +40,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pEndereco = enderecoModel.Cadastrar(pEndereco);
                 return Ok(pEndereco);
@@ -58,7 +58,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pEndereco = enderecoModel.Alterar(pEndereco);
                 return Ok(pEndereco);
@@ -76,7 +76,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pCodigo = enderecoModel.Excluir(pCodigo);
                 return Ok(pCodigo);

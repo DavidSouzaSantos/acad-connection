@@ -19,7 +19,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 List<CursoDTO> cursos = CursoModel.ConsultarPorInstituicao(pCodigoInstituicao);
 
@@ -41,7 +41,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pCurso = CursoModel.Cadastrar(pCurso);
                 return Ok(pCurso);
@@ -59,7 +59,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pCurso = CursoModel.Alterar(pCurso);
                 return Ok(pCurso);
@@ -77,7 +77,7 @@ namespace WebApiAcadConnection.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                    return BadRequest(ModelState.Values.SelectMany(m => m.Errors).ToString());
+                    return BadRequest(ModelState);
 
                 pCodigo = CursoModel.Excluir(pCodigo);
                 return Ok(pCodigo);
