@@ -6,6 +6,7 @@ using WebApiAcadConnection.Models;
 
 namespace WebApiAcadConnection.Controllers
 {
+    [Authorize]
     [RoutePrefix("WebApiAcadConnection/Aluno")]
     public class AlunoController : ApiController
     {

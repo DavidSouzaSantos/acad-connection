@@ -9,6 +9,7 @@ using WebApiAcadConnection.Models;
 
 namespace WebApiAcadConnection.Controllers
 {
+    [Authorize]
     [RoutePrefix("WebApiAcadConnection/Avaliacao")]
     public class AvaliacaoController : ApiController
     {

@@ -6,6 +6,7 @@ using WebApiAcadConnection.Models;
 
 namespace WebApiAcadConnection.Controllers
 {
+    [Authorize]
     [RoutePrefix("WebApiAcadConnection/Instituicao")]
     public class InstituicaoController : ApiController
     {
