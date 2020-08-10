@@ -1,23 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using WebApiAcadConnection.DAL;
 using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.DAOs
 {
+    ///<summary>
+    ///Classe DAO de Nota
+    ///</summary>
     public class NotaDAO
     {
         private AcessoBD AcessoBD;
 
+        ///<summary>
+        ///Construtor NotaDAO
+        ///</summary>
         public NotaDAO()
         {
             AcessoBD = new AcessoBD();
             AcessoBD.ConexaoSql = AcessoBD.ObterConexao();
         }
 
+        ///<summary>
+        ///Método para Consultar Nota pela Avaliação e Aluno
+        ///</summary>
+        ///<param name="pCodigoAvaliacao">Código da Avaliação</param>
+        ///<param name="pCodigoAluno">Código do Aluno</param>
         public List<NotaDTO> ConsultarPorAvaliacaoAluno(int pCodigoAvaliacao, int pCodigoAluno)
         {
             try
@@ -75,6 +84,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Cadastrar Nota
+        ///</summary>
+        ///<param name="pNota">Objeto da Nota</param>
         public int Cadastrar(NotaDTO pNota)
         {
             try
@@ -98,6 +111,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Alterar Nota
+        ///</summary>
+        ///<param name="pNota">Objeto da Nota</param>
         public bool Alterar(NotaDTO pNota)
         {
             try
@@ -122,6 +139,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Nota
+        ///</summary>
+        ///<param name="pCodigo">Código da Nota</param>
         public bool Excluir(int pCodigo)
         {
             try

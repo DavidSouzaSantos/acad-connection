@@ -8,16 +8,27 @@ using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.DAOs
 {
+
+    ///<summary>
+    ///Classe DAO de Disciplina
+    ///</summary>
     public class DisciplinaDAO
     {
         private AcessoBD AcessoBD;
 
+        ///<summary>
+        ///Construtor Disciplina
+        ///</summary>
         public DisciplinaDAO()
         {
             AcessoBD = new AcessoBD();
             AcessoBD.ConexaoSql = AcessoBD.ObterConexao();
         }
 
+        ///<summary>
+        ///Método para Consultar Disciplina pela Instituição
+        ///</summary>
+        ///<param name="pCodigoInstituicao">Código da Instituição</param>
         public List<DisciplinaDTO> ConsultarPorInstituicao(int pCodigoInstituicao)
         {
             try
@@ -63,6 +74,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Cadastrar Disciplina
+        ///</summary>
+        ///<param name="pDisciplina">Objeto do Disciplina</param>
         public int Cadastrar(DisciplinaDTO pDisciplina)
         {
             try
@@ -83,6 +98,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Alterar Disciplina
+        ///</summary>
+        ///<param name="pDisciplina">Objeto do Disciplina</param>
         public bool Alterar(DisciplinaDTO pDisciplina)
         {
             try
@@ -104,6 +123,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Disciplina
+        ///</summary>
+        ///<param name="pCodigo">Código do Disciplina</param>
         public bool Excluir(int pCodigo)
         {
             try

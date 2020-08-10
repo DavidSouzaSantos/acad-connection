@@ -11,8 +11,15 @@ using WebApiAcadConnection.Models;
 
 namespace WebApiAcadConnection.Provider
 {
+    /// <summary>
+    /// OAuthProviderTokens
+    /// </summary>
     public class OAuthProviderTokens : OAuthAuthorizationServerProvider
     {
+        /// <summary>
+        /// GrantResourceOwnerCredentials
+        /// </summary>
+        /// <param name="context"></param>
         public override Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             return Task.Factory.StartNew(() =>
@@ -40,6 +47,10 @@ namespace WebApiAcadConnection.Provider
             });
         }
 
+        /// <summary>
+        /// ValidateClientAuthentication
+        /// </summary>
+        /// <param name="context"></param>
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
             if (context.ClientId == null)

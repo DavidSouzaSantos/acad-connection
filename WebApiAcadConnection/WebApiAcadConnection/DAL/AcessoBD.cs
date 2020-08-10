@@ -11,8 +11,19 @@ namespace WebApiAcadConnection.DAL
     public class AcessoBD
     {
         #region Objetos Estáticos
+        ///<summary>
+        ///Objeto estático de Conexão SQL
+        ///</summary>
         public static SqlConnection ConexaoSql = new SqlConnection();
+
+        ///<summary>
+        ///Objeto estático de Comando SQL
+        ///</summary
         public static SqlCommand ComandoSql = new SqlCommand();
+
+        ///<summary>
+        ///Objeto estático de Parametro SQL
+        ///</summary
         public static SqlParameter ParametroSql = new SqlParameter();
         #endregion
 
@@ -59,7 +70,6 @@ namespace WebApiAcadConnection.DAL
         ///<summary>
         ///Método para limpar parametro ao comando
         ///</summary>
-        ///<param name="pNome">Nome do parametro</param>
         public void LimparParanetros()
         {
             ComandoSql.Parameters.Clear();

@@ -5,16 +5,26 @@ using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.DAOs
 {
+    ///<summary>
+    ///Classe DAO de Endereço
+    ///</summary>
     public class EnderecoDAO
     {
         private AcessoBD AcessoBD;
 
+        ///<summary>
+        ///Construtor EnderecoDAO
+        ///</summary>
         public EnderecoDAO()
         {
             AcessoBD = new AcessoBD();
             AcessoBD.ConexaoSql = AcessoBD.ObterConexao();
         }
 
+        ///<summary>
+        ///Método para Consultar Endereço pelo Código
+        ///</summary>
+        ///<param name="pCodigo">Código do Endereço</param>
         public EnderecoDTO ConsultarPorCodigo(int pCodigo)
         {
             try
@@ -70,6 +80,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Cadastrar Aluno
+        ///</summary>
+        ///<param name="pEndereco">Objeto do Endereço</param>
         public int Cadastrar(EnderecoDTO pEndereco)
         {
             try
@@ -97,6 +111,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Alterar Aluno
+        ///</summary>
+        ///<param name="pEndereco">Objeto do Endereço</param>
         public bool Alterar(EnderecoDTO pEndereco)
         {
             try
@@ -125,6 +143,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Aluno
+        ///</summary>
+        ///<param name="pCodigo">Código do Endereço</param>
         public bool Excluir(int pCodigo)
         {
             try

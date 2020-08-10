@@ -1,23 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using WebApiAcadConnection.DAL;
 using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.DAOs
 {
+    ///<summary>
+    ///Classe DAO de relação de aluno e curso
+    ///</summary>
     public class AlunoCursoDAO
     {
         private AcessoBD AcessoBD;
 
+        ///<summary>
+        ///Construtor AlunoCursoDAO
+        ///</summary>
         public AlunoCursoDAO()
         {
             AcessoBD = new AcessoBD();
             AcessoBD.ConexaoSql = AcessoBD.ObterConexao();
         }
 
+        ///<summary>
+        ///Método para Consultar Alunos pelo Curso
+        ///</summary>
+        ///<param name="pCodigoCurso">Código do Curso</param>
         public List<AlunoDTO> ConsultarAlunosPorCurso(int pCodigoCurso)
         {
             try
@@ -114,6 +122,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Consultar Cursos pelo Aluno
+        ///</summary>
+        ///<param name="pCodigoAluno">Código do Aluno</param>
         public List<CursoDTO> ConsultarCursosPorAluno(int pCodigoAluno)
         {
             try
@@ -177,6 +189,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Cadastrar Relação do Aluno e Curso
+        ///</summary>
+        ///<param name="pAlunoCurso">Objeto do AlunoCurso</param>
         public int Cadastrar(AlunoCursoDTO pAlunoCurso)
         {
             try
@@ -198,6 +214,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Alterar Relação do Aluno e Curso
+        ///</summary>
+        ///<param name="pAlunoCurso">Objeto do AlunoCurso</param>
         public bool Alterar(AlunoCursoDTO pAlunoCurso)
         {
             try
@@ -221,6 +241,11 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Relação do Aluno e Curso
+        ///</summary>
+        ///<param name="pCodigoAluno">Código do Aluno</param>
+        ///<param name="pCodigoCurso">Código do Curso</param>
         public bool Excluir(int pCodigoAluno, int pCodigoCurso)
         {
             try

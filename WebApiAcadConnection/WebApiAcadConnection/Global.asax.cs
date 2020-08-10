@@ -8,8 +8,14 @@ using System.Web.Routing;
 
 namespace WebApiAcadConnection
 {
+    /// <summary>
+    /// Class MvcApplication.
+    /// </summary>
     public class MvcApplication : System.Web.HttpApplication
     {
+        /// <summary>
+        /// Método Application_Start.
+        /// </summary>
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);

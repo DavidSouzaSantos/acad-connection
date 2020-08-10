@@ -5,15 +5,26 @@ using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.Models
 {
+    ///<summary>
+    ///Classe Model de Nota
+    ///</summary>
     public class NotaModel
     {
         private NotaDAO notaDAO;
 
+        ///<summary>
+        ///Construtor NotaDAO
+        ///</summary>
         public NotaModel()
         {
             notaDAO = new NotaDAO();
         }
 
+        ///<summary>
+        ///Método para Consultar Nota pela Avaliação e Aluno
+        ///</summary>
+        ///<param name="pCodigoAvaliacao">Código da Avaliação</param>
+        ///<param name="pCodigoAluno">Código do Aluno</param>
         public List<NotaDTO> ConsultarPorAvaliacaoAluno(int pCodigoAvaliacao, int pCodigoAluno)
         {
             try
@@ -31,16 +42,20 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public NotaDTO Cadastrar(NotaDTO nota)
+        ///<summary>
+        ///Método para Cadastrar Nota
+        ///</summary>
+        ///<param name="pNota">Objeto da Nota</param>
+        public NotaDTO Cadastrar(NotaDTO pNota)
         {
             try
             {
-                nota.Codigo = notaDAO.Cadastrar(nota);
+                pNota.Codigo = notaDAO.Cadastrar(pNota);
 
-                if (nota.Codigo == null || nota.Codigo.Value == 0)
+                if (pNota.Codigo == null || pNota.Codigo.Value == 0)
                     throw new Exception("Erro ao cadastrar nota");
 
-                return nota;
+                return pNota;
             }
             catch (Exception ex)
             {
@@ -48,14 +63,18 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public NotaDTO Alterar(NotaDTO nota)
+        ///<summary>
+        ///Método para Alterar Nota
+        ///</summary>
+        ///<param name="pNota">Objeto da Nota</param>
+        public NotaDTO Alterar(NotaDTO pNota)
         {
             try
             {
-                if (!notaDAO.Alterar(nota))
+                if (!notaDAO.Alterar(pNota))
                     throw new Exception("Erro ao alterar nota");
 
-                return nota;
+                return pNota;
             }
             catch (Exception ex)
             {
@@ -63,6 +82,10 @@ namespace WebApiAcadConnection.Models
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Nota
+        ///</summary>
+        ///<param name="pCodigo">Código da Nota</param>
         public int Excluir(int pCodigo)
         {
             try

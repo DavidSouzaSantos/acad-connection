@@ -7,8 +7,15 @@ using System.Web.Http;
 
 namespace WebApiAcadConnection
 {
+    /// <summary>
+    /// Class WebApiConfig.
+    /// </summary>
     public static class WebApiConfig
     {
+        /// <summary>
+        /// Register of web api configuration.
+        /// </summary>
+        /// <param name="config"></param>
         public static void Register(HttpConfiguration config)
         {
             // Web API routes

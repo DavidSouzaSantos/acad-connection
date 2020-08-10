@@ -1,21 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using WebApiAcadConnection.DAOs;
 using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.Models
 {
+    ///<summary>
+    ///Classe Model de Usuário
+    ///</summary>
     public class UsuarioModel
     {
         private UsuarioDAO usuarioDAO;
 
+        ///<summary>
+        ///Construtor UsuarioModel
+        ///</summary>
         public UsuarioModel()
         {
             usuarioDAO = new UsuarioDAO();
         }
 
+        ///<summary>
+        ///Método para Consultar Usuário pelo Código
+        ///</summary>
+        ///<param name="pCodigo">Código do Usuário</param>
         public UsuarioDTO ConsultarPorCodigo(int pCodigo)
         {
             try
@@ -33,6 +40,11 @@ namespace WebApiAcadConnection.Models
             }
         }
 
+        ///<summary>
+        ///Método para Consultar Usuário pelo Login e Senha
+        ///</summary>
+        ///<param name="pLogin">Login do Usuário</param>
+        ///<param name="pSenha">Senha do Usuário</param>cc
         public UsuarioDTO ConsultarUsuarioPorCredenciais(string pLogin, string pSenha)
         {
             try
@@ -47,16 +59,20 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public UsuarioDTO Cadastrar(UsuarioDTO usuario)
+        ///<summary>
+        ///Método para Cadastrar Usuário
+        ///</summary>
+        ///<param name="pUsuario">Objeto do Usuário</param>
+        public UsuarioDTO Cadastrar(UsuarioDTO pUsuario)
         {
             try
             {
-                usuario.Codigo = usuarioDAO.Cadastrar(usuario);
+                pUsuario.Codigo = usuarioDAO.Cadastrar(pUsuario);
 
-                if (usuario.Codigo == null || usuario.Codigo.Value == 0)
+                if (pUsuario.Codigo == null || pUsuario.Codigo.Value == 0)
                     throw new Exception("Erro ao cadastrar usuário");
 
-                return usuario;
+                return pUsuario;
             }
             catch (Exception ex)
             {
@@ -64,14 +80,18 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public UsuarioDTO Alterar(UsuarioDTO usuario)
+        ///<summary>
+        ///Método para Altera Usuário
+        ///</summary>
+        ///<param name="pUsuario">Objeto do Usuário</param>
+        public UsuarioDTO Alterar(UsuarioDTO pUsuario)
         {
             try
             {
-                if (!usuarioDAO.Alterar(usuario))
+                if (!usuarioDAO.Alterar(pUsuario))
                     throw new Exception("Erro ao alterar usuário");
 
-                return usuario;
+                return pUsuario;
             }
             catch (Exception ex)
             {
@@ -79,6 +99,10 @@ namespace WebApiAcadConnection.Models
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Usuário
+        ///</summary>
+        ///<param name="pCodigo">Objeto do Usuário</param>
         public int Excluir(int pCodigo)
         {
             try

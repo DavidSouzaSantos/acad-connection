@@ -1,21 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using WebApiAcadConnection.DAOs;
 using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.Models
 {
+    ///<summary>
+    ///Classe Model de Instituição
+    ///</summary>
     public class InstituicaoModel
     {
         private InstituicaoDAO disciplinaDAO;
 
+        ///<summary>
+        ///Construtor InstituicaoModel
+        ///</summary>
         public InstituicaoModel()
         {
             disciplinaDAO = new InstituicaoDAO();
         }
 
+        ///<summary>
+        ///Método para Consultar Instituição pelo Código
+        ///</summary>
+        ///<param name="pCodigo">Código do Endereço</param>
         public InstituicaoDTO ConsultarPorCodigo(int pCodigo)
         {
             try
@@ -33,16 +40,20 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public InstituicaoDTO Cadastrar(InstituicaoDTO instituicao)
+        ///<summary>
+        ///Método para Cadastrar Instituição
+        ///</summary>
+        ///<param name="pInstituicao">Objeto do Instituição</param>
+        public InstituicaoDTO Cadastrar(InstituicaoDTO pInstituicao)
         {
             try
             {
-                instituicao.Codigo = disciplinaDAO.Cadastrar(instituicao);
+                pInstituicao.Codigo = disciplinaDAO.Cadastrar(pInstituicao);
 
-                if (instituicao.Codigo == null || instituicao.Codigo.Value == 0)
+                if (pInstituicao.Codigo == null || pInstituicao.Codigo.Value == 0)
                     throw new Exception("Erro ao cadastrar instituição");
 
-                return instituicao;
+                return pInstituicao;
             }
             catch (Exception ex)
             {
@@ -50,14 +61,18 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public InstituicaoDTO Alterar(InstituicaoDTO instituicao)
+        ///<summary>
+        ///Método para Alterar Instituição
+        ///</summary>
+        ///<param name="pInstituicao">Objeto do Instituição</param>
+        public InstituicaoDTO Alterar(InstituicaoDTO pInstituicao)
         {
             try
             {
-                if (!disciplinaDAO.Alterar(instituicao))
+                if (!disciplinaDAO.Alterar(pInstituicao))
                     throw new Exception("Erro ao alterar instituição");
 
-                return instituicao;
+                return pInstituicao;
             }
             catch (Exception ex)
             {
@@ -65,6 +80,10 @@ namespace WebApiAcadConnection.Models
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Instituição
+        ///</summary>
+        ///<param name="pCodigo">Objeto do Instituição</param>
         public int Excluir(int pCodigo)
         {
             try

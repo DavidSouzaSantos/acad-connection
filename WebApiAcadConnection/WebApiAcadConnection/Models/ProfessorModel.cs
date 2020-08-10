@@ -7,15 +7,25 @@ using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.Models
 {
+    ///<summary>
+    ///Classe Model de Professor
+    ///</summary>
     public class ProfessorModel
     {
         private ProfessorDAO professorDAO;
 
+        ///<summary>
+        ///Construtor ProfessorModel
+        ///</summary>
         public ProfessorModel()
         {
             professorDAO = new ProfessorDAO();
         }
 
+        ///<summary>
+        ///Método para Consultar Professor pela Instituição
+        ///</summary>
+        ///<param name="pCodigoInstituicao">Código da Instituição</param>
         public List<ProfessorDTO> ConsultarPorInstituicao(int pCodigoInstituicao)
         {
             try
@@ -33,31 +43,39 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public ProfessorDTO Cadastrar(ProfessorDTO professor)
+        ///<summary>
+        ///Método para Cadastrar Professor
+        ///</summary>
+        ///<param name="pProfessor">Objeto do Professor</param>
+        public ProfessorDTO Cadastrar(ProfessorDTO pProfessor)
         {
             try
             {
-                professor.Codigo = professorDAO.Cadastrar(professor);
+                pProfessor.Codigo = professorDAO.Cadastrar(pProfessor);
 
-                if (professor.Codigo == null || professor.Codigo.Value == 0)
+                if (pProfessor.Codigo == null || pProfessor.Codigo.Value == 0)
                     throw new Exception("Erro ao cadastrar professor");
 
-                return professor;
+                return pProfessor;
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw ex;  
             }
         }
 
-        public ProfessorDTO Alterar(ProfessorDTO professor)
+        ///<summary>
+        ///Método para Alterar Professor
+        ///</summary>
+        ///<param name="pProfessor">Objeto do Professor</param>
+        public ProfessorDTO Alterar(ProfessorDTO pProfessor)
         {
             try
             {
-                if (!professorDAO.Alterar(professor))
+                if (!professorDAO.Alterar(pProfessor))
                     throw new Exception("Erro ao alterar professor");
 
-                return professor;
+                return pProfessor;
             }
             catch (Exception ex)
             {
@@ -65,6 +83,10 @@ namespace WebApiAcadConnection.Models
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Professor
+        ///</summary>
+        ///<param name="pCodigo">Código do Professor</param>
         public int Excluir(int pCodigo)
         {
             try

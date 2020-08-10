@@ -5,16 +5,26 @@ using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.DAOs
 {
+    ///<summary>
+    ///Classe DAO de Instituição
+    ///</summary>
     public class InstituicaoDAO
     {
         private AcessoBD AcessoBD;
 
+        ///<summary>
+        ///Construtor InstituicaoDAO
+        ///</summary>
         public InstituicaoDAO()
         {
             AcessoBD = new AcessoBD();
             AcessoBD.ConexaoSql = AcessoBD.ObterConexao();
         }
 
+        ///<summary>
+        ///Método para Consultar Instituição pelo Código
+        ///</summary>
+        ///<param name="pCodigo">Código do Endereço</param>
         public InstituicaoDTO ConsultarPorCodigo(int pCodigo)
         {
             try
@@ -103,6 +113,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Cadastrar Instituição
+        ///</summary>
+        ///<param name="pInstituicao">Objeto do Instituição</param>
         public int Cadastrar(InstituicaoDTO pInstituicao)
         {
             try
@@ -130,6 +144,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Alterar Instituição
+        ///</summary>
+        ///<param name="pInstituicao">Objeto do Instituição</param>
         public bool Alterar(InstituicaoDTO pInstituicao)
         {
             try
@@ -157,6 +175,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Instituição
+        ///</summary>
+        ///<param name="pCodigo">Objeto do Instituição</param>
         public bool Excluir(int pCodigo)
         {
             try

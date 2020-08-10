@@ -1,21 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using WebApiAcadConnection.DAOs;
 using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.Models
 {
+    ///<summary>
+    ///Classe Model de Curso
+    ///</summary>
     public class CursoModel
     {
         private CursoDAO cursoDAO;
 
+        ///<summary>
+        ///Construtor CursoModel
+        ///</summary>
         public CursoModel()
         {
             cursoDAO = new CursoDAO();
         }
 
+        ///<summary>
+        ///Método para Consultar Cursos pela Instituição
+        ///</summary>
+        ///<param name="pCodigoInstituicao">Código da Instituição</param>
         public List<CursoDTO> ConsultarPorInstituicao(int pCodigoInstituicao)
         {
             try
@@ -33,16 +41,20 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public CursoDTO Cadastrar(CursoDTO curso)
+        ///<summary>
+        ///Método para Cadastrar Curso
+        ///</summary>
+        ///<param name="pCurso">Objeto do Curso</param>
+        public CursoDTO Cadastrar(CursoDTO pCurso)
         {
             try
             {
-                curso.Codigo = cursoDAO.Cadastrar(curso);
+                pCurso.Codigo = cursoDAO.Cadastrar(pCurso);
 
-                if (curso.Codigo == null || curso.Codigo.Value == 0)
+                if (pCurso.Codigo == null || pCurso.Codigo.Value == 0)
                     throw new Exception("Erro ao cadastrar curso");
 
-                return curso;
+                return pCurso;
             }
             catch (Exception ex)
             {
@@ -50,14 +62,18 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public CursoDTO Alterar(CursoDTO curso)
+        ///<summary>
+        ///Método para Alterar Curso
+        ///</summary>
+        ///<param name="pCurso">Objeto do Curso</param>
+        public CursoDTO Alterar(CursoDTO pCurso)
         {
             try
             {
-                if (!cursoDAO.Alterar(curso))
+                if (!cursoDAO.Alterar(pCurso))
                     throw new Exception("Erro ao alterar curso");
 
-                return curso;
+                return pCurso;
             }
             catch (Exception ex)
             {
@@ -65,6 +81,10 @@ namespace WebApiAcadConnection.Models
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Curso
+        ///</summary>
+        ///<param name="pCodigo">Código do Curso</param>
         public int Excluir(int pCodigo)
         {
             try

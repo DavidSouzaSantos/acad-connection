@@ -6,8 +6,15 @@ using Owin;
 
 namespace WebApiAcadConnection.Extentions
 {
+    /// <summary>
+    /// OwinContextExtentions
+    /// </summary>
     public static class OwinContextExtentions
     {
+        /// <summary>
+        /// Retorna o id do usuário
+        /// </summary>
+        /// <param name="context"></param>
         public static string getUserId(this IOwinContext context)
         {
             var result = "-1";

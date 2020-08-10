@@ -7,12 +7,26 @@ using WebApiAcadConnection.Models;
 
 namespace WebApiAcadConnection.Controllers
 {
+    /// <summary>
+    /// ProfessorController
+    /// </summary>
     [Authorize]
     [RoutePrefix("WebApiAcadConnection/Professor")]
     public class ProfessorController : ApiController
     {
         ProfessorModel professorModel = new ProfessorModel();
 
+        /// <summary>
+        /// Consultar Professores pelo Instituição
+        /// </summary>
+        /// <remarks>
+        /// Consultar Professores pelo Instituição
+        /// </remarks>
+        /// <param name="pCodigoInstituicao">Código da Intituição</param>
+        /// <returns>Professores da Instituição</returns>
+        /// <response code="200">Sucesso</response>
+        /// <response code="404">Não Encontrado</response>
+        /// <response code="400">Erro</response>
         [HttpGet]
         [Route("ConsultarPorInstituicao/{pCodigo}")]
         public IHttpActionResult ConsultarPorInstituicao(int pCodigoInstituicao)
@@ -35,6 +49,17 @@ namespace WebApiAcadConnection.Controllers
             }
         }
 
+        /// <summary>
+        /// Cadastrar Professor
+        /// </summary>
+        /// <remarks>
+        /// Cadastrar Professor
+        /// </remarks>
+        /// <param name="pProfessor">Objeto Professor</param>
+        /// <returns>Professor Cadastrado</returns>
+        /// <response code="200">Sucesso</response>
+        /// <response code="404">Não Encontrado</response>
+        /// <response code="400">Erro</response>
         [HttpPost]
         [Route("Cadastrar")]
         public IHttpActionResult Cadastrar(ProfessorDTO pProfessor)
@@ -53,6 +78,17 @@ namespace WebApiAcadConnection.Controllers
             }
         }
 
+        /// <summary>
+        /// Alterar Professor
+        /// </summary>
+        /// <remarks>
+        /// Alterar Professor
+        /// </remarks>
+        /// <param name="pProfessor">Objeto Professor</param>
+        /// <returns>Professor Alterado</returns>
+        /// <response code="200">Sucesso</response>
+        /// <response code="404">Não Encontrado</response>
+        /// <response code="400">Erro</response>
         [HttpPut]
         [Route("Alterar")]
         public IHttpActionResult Alterar(ProfessorDTO pProfessor)
@@ -71,6 +107,17 @@ namespace WebApiAcadConnection.Controllers
             }
         }
 
+        /// <summary>
+        /// Excluir Professor
+        /// </summary>
+        /// <remarks>
+        /// Excluir Professor
+        /// </remarks>
+        /// <param name="pCodigo">Código do Professor</param>
+        /// <returns>Professor Excluído</returns>
+        /// <response code="200">Sucesso</response>
+        /// <response code="404">Não Encontrado</response>
+        /// <response code="400">Erro</response>
         [HttpDelete]
         [Route("{pCodigo}/Excluir")]
         public IHttpActionResult Excluir(int pCodigo)

@@ -8,16 +8,26 @@ using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.DAOs
 {
+    ///<summary>
+    ///Classe DAO de Professor
+    ///</summary>
     public class ProfessorDAO
     {
         private AcessoBD AcessoBD;
 
+        ///<summary>
+        ///Construtor ProfessorDAO
+        ///</summary>
         public ProfessorDAO()
         {
             AcessoBD = new AcessoBD();
             AcessoBD.ConexaoSql = AcessoBD.ObterConexao();
         }
 
+        ///<summary>
+        ///Método para Consultar Professor pela Instituição
+        ///</summary>
+        ///<param name="pCodigoInstituicao">Código da Instituição</param>
         public List<ProfessorDTO> ConsultarPorInstituicao(int pCodigoInstituicao)
         {
             try
@@ -113,6 +123,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Cadastrar Professor
+        ///</summary>
+        ///<param name="pProfessor">Objeto do Professor</param>
         public int Cadastrar(ProfessorDTO pProfessor)
         {
             try
@@ -143,6 +157,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Alterar Professor
+        ///</summary>
+        ///<param name="pProfessor">Objeto do Professor</param>
         public bool Alterar(ProfessorDTO pProfessor)
         {
             try
@@ -173,6 +191,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Professor
+        ///</summary>
+        ///<param name="pCodigo">Código do Professor</param>
         public bool Excluir(int pCodigo)
         {
             try

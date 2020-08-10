@@ -2,6 +2,9 @@
 
 namespace WebApiAcadConnection.Enums
 {
+    /// <summary>
+    /// PerfilEnum
+    /// </summary>
     public enum PerfilEnum
     {
         [DefaultValue(0)]
@@ -25,6 +28,9 @@ namespace WebApiAcadConnection.Enums
         Aluno
     }
 
+    /// <summary>
+    /// SexoEnum
+    /// </summary>
     public enum SexoEnum
     {
         [DefaultValue("")]

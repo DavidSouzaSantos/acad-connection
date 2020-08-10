@@ -1,21 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using WebApiAcadConnection.DAOs;
 using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.Models
 {
+    ///<summary>
+    ///Classe Model de Endereço
+    ///</summary>
     public class EnderecoModel
     {
         private EnderecoDAO enderecoDAO;
 
+        ///<summary>
+        ///Construtor EnderecoModel
+        ///</summary>
         public EnderecoModel()
         {
             enderecoDAO = new EnderecoDAO();
         }
 
+        ///<summary>
+        ///Método para Consultar Endereço pelo Código
+        ///</summary>
+        ///<param name="pCodigo">Código do Endereço</param>
         public EnderecoDTO ConsultarPorCodigo(int pCodigo)
         {
             try
@@ -33,16 +40,20 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public EnderecoDTO Cadastrar(EnderecoDTO endereco)
+        ///<summary>
+        ///Método para Cadastrar Aluno
+        ///</summary>
+        ///<param name="pEndereco">Objeto do Endereço</param>
+        public EnderecoDTO Cadastrar(EnderecoDTO pEndereco)
         {
             try
             {
-                endereco.Codigo = enderecoDAO.Cadastrar(endereco);
+                pEndereco.Codigo = enderecoDAO.Cadastrar(pEndereco);
 
-                if (endereco.Codigo == null || endereco.Codigo.Value == 0)
+                if (pEndereco.Codigo == null || pEndereco.Codigo.Value == 0)
                     throw new Exception("Erro ao cadastrar endereço");
 
-                return endereco;
+                return pEndereco;
             }
             catch (Exception ex)
             {
@@ -50,14 +61,18 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public EnderecoDTO Alterar(EnderecoDTO endereco)
+        ///<summary>
+        ///Método para Alterar Aluno
+        ///</summary>
+        ///<param name="pEndereco">Objeto do Endereço</param>
+        public EnderecoDTO Alterar(EnderecoDTO pEndereco)
         {
             try
             {
-                if (!enderecoDAO.Alterar(endereco))
+                if (!enderecoDAO.Alterar(pEndereco))
                     throw new Exception("Erro ao alterar endereço");
 
-                return endereco;
+                return pEndereco;
             }
             catch (Exception ex)
             {
@@ -65,6 +80,10 @@ namespace WebApiAcadConnection.Models
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Aluno
+        ///</summary>
+        ///<param name="pCodigo">Código do Endereço</param>
         public int Excluir(int pCodigo)
         {
             try

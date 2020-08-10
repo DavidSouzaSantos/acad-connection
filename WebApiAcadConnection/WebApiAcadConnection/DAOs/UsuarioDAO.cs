@@ -5,16 +5,26 @@ using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.DAOs
 {
+    ///<summary>
+    ///Classe DAO de Usuário
+    ///</summary>
     public class UsuarioDAO
     {
         private AcessoBD AcessoBD;
 
+        ///<summary>
+        ///Construtor UsuarioDAO
+        ///</summary>
         public UsuarioDAO()
         {
             AcessoBD = new AcessoBD();
             AcessoBD.ConexaoSql = AcessoBD.ObterConexao();
         }
 
+        ///<summary>
+        ///Método para Consultar Usuário pelo Código
+        ///</summary>
+        ///<param name="pCodigo">Código do Usuário</param>
         public UsuarioDTO ConsultarPorCodigo(int pCodigo)
         {
             try
@@ -60,6 +70,11 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Consultar Usuário pelo Login e Senha
+        ///</summary>
+        ///<param name="pLogin">Login do Usuário</param>
+        ///<param name="pSenha">Senha do Usuário</param>
         public UsuarioDTO ConsultarUsuarioPorCredenciais(string pLogin, string pSenha)
         {
             try
@@ -107,6 +122,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Cadastrar Usuário
+        ///</summary>
+        ///<param name="pUsuario">Objeto do Usuário</param>
         public int Cadastrar(UsuarioDTO pUsuario)
         {
             try
@@ -129,6 +148,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Altera Usuário
+        ///</summary>
+        ///<param name="pUsuario">Objeto do Usuário</param>
         public bool Alterar(UsuarioDTO pUsuario)
         {
             try
@@ -152,6 +175,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Usuário
+        ///</summary>
+        ///<param name="pCodigo">Objeto do Usuário</param>
         public bool Excluir(int pCodigo)
         {
             try

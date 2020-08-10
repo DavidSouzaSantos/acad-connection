@@ -7,15 +7,25 @@ using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.Models
 {
+    ///<summary>
+    ///Classe Model de Avaliação
+    ///</summary>
     public class AvaliacaoModel
     {
         private AvaliacaoDAO avaliacaoDAO;
 
+        ///<summary>
+        ///Construtor AvaliacaoModel
+        ///</summary>
         public AvaliacaoModel()
         {
             avaliacaoDAO = new AvaliacaoDAO();
         }
 
+        ///<summary>
+        ///Método para Consultar Avaliações pelo Curso
+        ///</summary>
+        ///<param name="pCodigoCurso">Código do Curso</param>mo
         public List<AvaliacaoDTO> ConsultarPorCurso(int pCodigoCurso)
         {
             try
@@ -33,16 +43,20 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public AvaliacaoDTO Cadastrar(AvaliacaoDTO avaliacao)
+        ///<summary>
+        ///Método para Cadastrar Avaliação
+        ///</summary>
+        ///<param name="pAvaliacao">Objeto da Avaliação</param>
+        public AvaliacaoDTO Cadastrar(AvaliacaoDTO pAvaliacao)
         {
             try
             {
-                avaliacao.Codigo = avaliacaoDAO.Cadastrar(avaliacao);
+                pAvaliacao.Codigo = avaliacaoDAO.Cadastrar(pAvaliacao);
 
-                if (avaliacao.Codigo == null || avaliacao.Codigo.Value == 0)
+                if (pAvaliacao.Codigo == null || pAvaliacao.Codigo.Value == 0)
                     throw new Exception("Erro ao cadastrar avaliação");
 
-                return avaliacao;
+                return pAvaliacao;
             }
             catch (Exception ex)
             {
@@ -50,14 +64,18 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public AvaliacaoDTO Alterar(AvaliacaoDTO avaliacao)
+        ///<summary>
+        ///Método para Alterar Avaliação
+        ///</summary>
+        ///<param name="pAvaliacao">Objeto da Avaliação</param>
+        public AvaliacaoDTO Alterar(AvaliacaoDTO pAvaliacao)
         {
             try
             {
-                if (!avaliacaoDAO.Alterar(avaliacao))
+                if (!avaliacaoDAO.Alterar(pAvaliacao))
                     throw new Exception("Erro ao alterar avaliação");
 
-                return avaliacao;
+                return pAvaliacao;
             }
             catch (Exception ex)
             {
@@ -65,6 +83,10 @@ namespace WebApiAcadConnection.Models
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Avaliação
+        ///</summary>
+        ///<param name="pCodigo">Código da Avaliação</param>
         public int Excluir(int pCodigo)
         {
             try

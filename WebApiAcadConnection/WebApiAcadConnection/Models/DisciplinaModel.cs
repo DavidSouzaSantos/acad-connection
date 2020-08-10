@@ -1,21 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using WebApiAcadConnection.DAOs;
 using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.Models
 {
+    ///<summary>
+    ///Classe Model de Disciplina
+    ///</summary>
     public class DisciplinaModel
     {
         private DisciplinaDAO disciplinaDAO;
 
+        ///<summary>
+        ///Construtor Disciplina
+        ///</summary>
         public DisciplinaModel()
         {
             disciplinaDAO = new DisciplinaDAO();
         }
 
+        ///<summary>
+        ///Método para Consultar Disciplina pela Instituição
+        ///</summary>
+        ///<param name="pCodigoInstituicao">Código da Instituição</param>
         public List<DisciplinaDTO> ConsultarPorInstituicao(int pCodigoInstituicao)
         {
             try
@@ -33,16 +41,20 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public DisciplinaDTO Cadastrar(DisciplinaDTO disciplina)
+        ///<summary>
+        ///Método para Cadastrar Disciplina
+        ///</summary>
+        ///<param name="pDisciplina">Objeto do Disciplina</param>
+        public DisciplinaDTO Cadastrar(DisciplinaDTO pDisciplina)
         {
             try
             {
-                disciplina.Codigo = disciplinaDAO.Cadastrar(disciplina);
+                pDisciplina.Codigo = disciplinaDAO.Cadastrar(pDisciplina);
 
-                if (disciplina.Codigo == null || disciplina.Codigo.Value == 0)
+                if (pDisciplina.Codigo == null || pDisciplina.Codigo.Value == 0)
                     throw new Exception("Erro ao cadastrar disciplina");
 
-                return disciplina;
+                return pDisciplina;
             }
             catch (Exception ex)
             {
@@ -50,14 +62,18 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public DisciplinaDTO Alterar(DisciplinaDTO disciplina)
+        ///<summary>
+        ///Método para Alterar Disciplina
+        ///</summary>
+        ///<param name="pDisciplina">Objeto do Disciplina</param>
+        public DisciplinaDTO Alterar(DisciplinaDTO pDisciplina)
         {
             try
             {
-                if (!disciplinaDAO.Alterar(disciplina))
+                if (!disciplinaDAO.Alterar(pDisciplina))
                     throw new Exception("Erro ao alterar disciplina");
 
-                return disciplina;
+                return pDisciplina;
             }
             catch (Exception ex)
             {
@@ -65,6 +81,10 @@ namespace WebApiAcadConnection.Models
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Disciplina
+        ///</summary>
+        ///<param name="pCodigo">Código do Disciplina</param>
         public int Excluir(int pCodigo)
         {
             try

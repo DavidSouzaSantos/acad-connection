@@ -5,17 +5,27 @@ using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.Models
 {
+    ///<summary>
+    ///Classe Model de Aluno
+    ///</summary>
     public class AlunoModel
     {
         private AlunoDAO alunoDAO;
         private AlunoCursoDAO alunoCursoDAO;
 
+        ///<summary>
+        ///Construtor AlunoModel
+        ///</summary>
         public AlunoModel()
         {
             alunoDAO = new AlunoDAO();
             alunoCursoDAO = new AlunoCursoDAO();
         }
 
+        ///<summary>
+        ///Método para Consultar Alunos pelo Curso
+        ///</summary>
+        ///<param name="pCodigoCurso">Código do Curso</param>
         public List<AlunoDTO> ConsultarPorCurso(int pCodigoCurso)
         {
             List<AlunoDTO> aluno = alunoCursoDAO.ConsultarAlunosPorCurso(pCodigoCurso);
@@ -26,6 +36,10 @@ namespace WebApiAcadConnection.Models
             return alunoCursoDAO.ConsultarAlunosPorCurso(pCodigoCurso);
         }
 
+        ///<summary>
+        ///Método para Consultar Aluno pelo Código
+        ///</summary>
+        ///<param name="pCodigo">Código do Aluno</param>
         public AlunoDTO ConsultarPorCodigo(int pCodigo)
         {
             try
@@ -43,22 +57,26 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public AlunoDTO Cadastrar(AlunoDTO aluno)
+        ///<summary>
+        ///Método para Cadastrar Aluno
+        ///</summary>
+        ///<param name="pAluno">Objeto do Aluno</param>
+        public AlunoDTO Cadastrar(AlunoDTO pAluno)
         {
             try
             {
                 EnderecoModel enderecoModel = new EnderecoModel();
-                aluno.Endereco = enderecoModel.Cadastrar(aluno.Endereco);
+                pAluno.Endereco = enderecoModel.Cadastrar(pAluno.Endereco);
 
                 UsuarioModel usuarioModel = new UsuarioModel();
-                aluno.Usuario = usuarioModel.Cadastrar(aluno.Usuario);
+                pAluno.Usuario = usuarioModel.Cadastrar(pAluno.Usuario);
 
-                aluno.Codigo = alunoDAO.Cadastrar(aluno);
+                pAluno.Codigo = alunoDAO.Cadastrar(pAluno);
 
-                if (aluno.Codigo == null || aluno.Codigo.Value == 0)
+                if (pAluno.Codigo == null || pAluno.Codigo.Value == 0)
                     throw new Exception("Erro ao cadastrar aluno");
 
-                return aluno;
+                return pAluno;
             }
             catch (Exception ex)
             {
@@ -66,27 +84,31 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public AlunoDTO Alterar(AlunoDTO aluno)
+        ///<summary>
+        ///Método para Alterar Aluno
+        ///</summary>
+        ///<param name="pAluno">Objeto do Aluno</param>
+        public AlunoDTO Alterar(AlunoDTO pAluno)
         {
             try
             {
 
-                if (aluno.Endereco != null && (aluno.Endereco.Codigo != null && aluno.Endereco.Codigo > 0))
+                if (pAluno.Endereco != null && (pAluno.Endereco.Codigo != null && pAluno.Endereco.Codigo > 0))
                 {
                     EnderecoModel enderecoModel = new EnderecoModel();
-                    aluno.Endereco = enderecoModel.Alterar(aluno.Endereco);
+                    pAluno.Endereco = enderecoModel.Alterar(pAluno.Endereco);
                 }
 
-                if (aluno.Usuario != null && (aluno.Usuario.Codigo != null && aluno.Usuario.Codigo > 0))
+                if (pAluno.Usuario != null && (pAluno.Usuario.Codigo != null && pAluno.Usuario.Codigo > 0))
                 {
                     UsuarioModel usuarioModel = new UsuarioModel();
-                    aluno.Usuario = usuarioModel.Alterar(aluno.Usuario);
+                    pAluno.Usuario = usuarioModel.Alterar(pAluno.Usuario);
                 }
 
-                if (!alunoDAO.Alterar(aluno))
+                if (!alunoDAO.Alterar(pAluno))
                     throw new Exception("Erro ao alterar aluno");
 
-                return aluno;
+                return pAluno;
             }
             catch (Exception ex)
             {
@@ -94,6 +116,10 @@ namespace WebApiAcadConnection.Models
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Aluno
+        ///</summary>
+        ///<param name="pCodigo">Código do Aluno</param>
         public int Excluir(int pCodigo)
         {
             try
@@ -116,16 +142,20 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public AlunoCursoDTO VincularCurso(AlunoCursoDTO alunoCursoDTO)
+        ///<summary>
+        ///Método para Vincular Aluno ao Curso
+        ///</summary>
+        ///<param name="pAlunoCursoDTO">Objeto do AlunoCurso</param>
+        public AlunoCursoDTO VincularCurso(AlunoCursoDTO pAlunoCursoDTO)
         {
             try
             {
-                int codigo = alunoCursoDAO.Cadastrar(alunoCursoDTO);
+                int codigo = alunoCursoDAO.Cadastrar(pAlunoCursoDTO);
 
                 if (codigo == 0)
                     throw new Exception("Erro ao vincular curso");
 
-                return alunoCursoDTO;
+                return pAlunoCursoDTO;
             }
             catch (Exception ex)
             {
@@ -133,15 +163,19 @@ namespace WebApiAcadConnection.Models
             }
         }
 
-        public AlunoCursoDTO DesvincularCurso(AlunoCursoDTO alunoCursoDTO)
+        ///<summary>
+        ///Método para Desvincular Aluno ao Curso
+        ///</summary>
+        ///<param name="pAlunoCursoDTO">Objeto do AlunoCurso</param>
+        public AlunoCursoDTO DesvincularCurso(AlunoCursoDTO pAlunoCursoDTO)
         {
             try
             {
-                alunoCursoDTO.Ativo = !alunoCursoDTO.Ativo;
-                if (!alunoCursoDAO.Alterar(alunoCursoDTO))
+                pAlunoCursoDTO.Ativo = !pAlunoCursoDTO.Ativo;
+                if (!alunoCursoDAO.Alterar(pAlunoCursoDTO))
                     throw new Exception("Erro ao vincular curso");
 
-                return alunoCursoDTO;
+                return pAlunoCursoDTO;
             }
             catch (Exception ex)
             {

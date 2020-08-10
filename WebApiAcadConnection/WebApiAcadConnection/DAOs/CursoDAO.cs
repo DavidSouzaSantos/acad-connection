@@ -8,16 +8,26 @@ using WebApiAcadConnection.DTOs;
 
 namespace WebApiAcadConnection.DAOs
 {
+    ///<summary>
+    ///Classe DAO de Curso
+    ///</summary>
     public class CursoDAO
     {
         private AcessoBD AcessoBD;
 
+        ///<summary>
+        ///Construtor CursoDAO
+        ///</summary>
         public CursoDAO()
         {
             AcessoBD = new AcessoBD();
             AcessoBD.ConexaoSql = AcessoBD.ObterConexao();
         }
 
+        ///<summary>
+        ///Método para Consultar Cursos pela Instituição
+        ///</summary>
+        ///<param name="pCodigoInstituicao">Código da Instituição</param>
         public List<CursoDTO> ConsultarPorInstituicao(int pCodigoInstituicao)
         {
             try
@@ -105,6 +115,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Cadastrar Curso
+        ///</summary>
+        ///<param name="pCurso">Objeto do Curso</param>
         public int Cadastrar(CursoDTO pCurso)
         {
             try
@@ -132,6 +146,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Alterar Curso
+        ///</summary>
+        ///<param name="pCurso">Objeto do Curso</param>
         public bool Alterar(CursoDTO pCurso)
         {
             try
@@ -160,6 +178,10 @@ namespace WebApiAcadConnection.DAOs
             }
         }
 
+        ///<summary>
+        ///Método para Excluir Curso
+        ///</summary>
+        ///<param name="pCodigo">Código do Curso</param>
         public bool Excluir(int pCodigo)
         {
             try
